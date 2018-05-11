@@ -1,0 +1,45 @@
+
+
+<%= render(cart.line_items) %>
+
+<p><%= number_to_currency(cart.total_price) %></p>
+
+
+<% @cart.line_items.each do |products_cart| %>
+  <% @products_cart = products_cart.product %>
+  <% end %>
+  <script src="https://js.stripe.com/v3/"></script>
+  <div id="payment-request-button">
+  var stripe = Stripe('pk_test_bhFNBUkr0BhdSaZwQzjeUbzN');
+  var paymentRequest = stripe.paymentRequest({
+    country: 'US',
+    currency: 'usd',
+    total: {
+      label: 'Demo total',
+      amount: 1000,
+    },
+  });
+  var elements = stripe.elements();
+  var prButton = elements.create('paymentRequestButton', {
+    paymentRequest: paymentRequest,
+  });
+  
+  // Check the availability of the Payment Request API first.
+  paymentRequest.canMakePayment().then(function(result) {
+    if (result) {
+      prButton.mount('#payment-request-button');
+    } else {
+      document.getElementById('payment-request-button').style.display = 'none';
+    }
+  });
+  </div>
+
+
+<%= link_to image_tag( "https://s3-ap-southeast-2.amazonaws.com/thenewsocialmarketplace-development/blue-on-dark%403x.png"), user_stripe_connect_omniauth_authorize_path,class:"go_up"  %>
+<%= button_to 'Empty cart', cart, method: :delete, data: { confirm: 'Empty your Cart, sure?' } %>  
+<%= button_to'Checkout', transactions_path, method: :get, class: "btn-primary"%>
+
+
+   
+
+

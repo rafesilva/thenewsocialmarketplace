@@ -1,0 +1,26 @@
+
+
+    <div class="main">
+		<h1>Messages</h1>		
+    <div class="content">
+    <div class="profile">
+   <p> <%= link_to "Your Profile", users_url, class: "btn btn-default" %></p>
+
+   <p>   <%= link_to "New Text Post", new_text_post_path, class: "btn btn-default" %></p>
+    <p>  <%= link_to "New Image Post", new_image_post_path, class: "btn btn-default" %></p>
+      </div>
+
+    <div class="profile-posts">
+      <%= render @posts %>
+    </div>
+    </div>
+    </div>
+    </div>
+
+  
+   
+
+
+
+
+

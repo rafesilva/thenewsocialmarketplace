@@ -1,0 +1,32 @@
+<div class="content-login">
+<%= notice %></p>
+
+<div class="box-login">
+<p>
+Image:
+<%= image_tag(@product.image_file_url) %>
+</p>
+</p>
+TITLE:
+ 
+ <strong><%= @product.title %><strong>
+</br>
+<p>
+Description:
+  </p>
+<p><%= @product.description %></p>
+</br>
+<p>
+Image_URL:
+  
+</p><%= @product.image_url %>
+</p>
+</br>
+<p>
+Price:
+ 
+</p> <%= @product.price %>
+</div>
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>
+</div>

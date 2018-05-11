@@ -1,0 +1,38 @@
+<div class="main">
+  <h1>User</h1>
+
+
+<div class="content-login">
+
+<div class="box-longin">
+<% if current_user %>
+<div>
+<%= image_tag @user.avatar.url, class:"pic" %>
+</div>
+<% else %>
+<%end%>
+</div>
+<div class="profile">
+<h2><%= @user.name %></h2>
+<h2><%= @user.email %></h2>
+<h2><% @user.posts.each do |post| %></h2>
+  <a href="/posts/<%= post.id %> "><%= post.title %></a>
+  <%= post.body %>
+
+  <% end %>
+
+</div>
+
+<% if current_user %>
+<% if current_user != @user && !current_user.following?(@user) %>
+ 
+ <% end %>
+<% end %>
+<div>
+<p><%= link_to "Follow", follow_user_path(@user), method: :post, class: "btn btn-default" %></p>
+<p><%= link_to "Home", streaming_index_url, class: "btn btn-default" %></p>
+</div>
+
+</div>
+
+</div>

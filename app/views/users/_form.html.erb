@@ -1,0 +1,24 @@
+<div class="main">
+<div class="content-login">
+    <%= form_for @user do |f| %>
+    <div class="box-login">
+    <p><%= f.label :name %></p>
+    <p><%= f.text_field :name, class: "form-control" %></p>
+    
+    <p><%= f.label :email %></p>
+    <p><%= f.text_area :email, class: "form-control" %></p>
+    <p><%= f.label :avatar %></p>
+    <p><%= f.file_field :avatar, class: "form-control" %></p>
+    <p><%= f.label :password %></p>
+    <p><%= f.password_field :password, class: "form-control" %></p>
+    <p><%= f.label :password_confirmation %></p>
+    <p><%= f.password_field :password_confirmation, class: "form-control" %></p>
+    </div>
+
+  <p><%= submit_tag "Update info", class: "btn-primary" %></p>
+  <p><%= link_to 'Cancel', :back, class: "btn btn-default" %></p>
+  <% end %>
+
+  </div>
+  </div>
+  

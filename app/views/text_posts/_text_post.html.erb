@@ -1,0 +1,16 @@
+<body>
+
+<div class="main-posts">
+<a href="/posts/<%= text_post.id %> "><%= text_post.title %>  </a>
+        <div class="content-posts">
+        <%= text_post.body %>
+            <div class="profile-post">
+                By <a href="/users/<%= text_post.user.id %> ">  <%= text_post.user.name %></a>
+                    
+                </div>
+
+        </div>
+
+    </div>
+
+</body>

@@ -1,0 +1,56 @@
+
+        <div class="btn-search">
+        <%= form_tag(users_path, method: :get) do %>
+          <%= text_field_tag :user, params[:user], class:"btn-search" %>
+          <%= submit_tag 'Search' ,class:"btn-primary" %>
+      
+
+        </div>
+        <% end %>
+<% cache @products do %>
+    <% @products.each do |product| %>
+        <% cache @products do %>
+    <div class="main">
+    <p><h2>What do you will buy today?</h2></p>
+  
+    </div>
+             <div class="profile">
+                 <div class="profile-top">
+                     <div class="pic-sec">
+                         <div class="pic">
+                        <spam> <%= image_tag product.image_file.url %> </spam>
+                                    <% else %>
+                         </div>
+                         <div class="pic_info">
+                                <h2>Seller:</h2>
+                             <h1><%= product.user.name %> </h1>
+                             </br>
+                             <h2><%= product.title %></h2>
+                             </br>
+                             <h2>Price:</h2>
+
+                             <h3><%= number_to_currency(product.price) %></h3>
+                         </div>
+                         <div class="clear"></div>
+                     </div>
+                     <div class="media">
+                    
+                         <h2>Description</h2>
+                             <h3><%= sanitize(product.description) %></h3>
+                            
+                         
+                           
+                       
+                         <div class="clear"></div>
+                     </div>
+                 </div>
+                     <ul>
+                         <li><%= button_to 'Add to Cart', line_items_path(product_id: product), class:"btn-primary" %></li> 
+                         
+      <% end %>
+      <% end %>
+      <% end %> 
+    
+
+
+</div>

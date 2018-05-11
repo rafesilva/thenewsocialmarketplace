@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Thes New Social MarketPlace</title>
+    <link href="https://fonts.googleapis.com/css?family=Forum|Gentium+Basic" rel="stylesheet">
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css?family=Gentium+Basic" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css?family=Libre+Baskerville|Skranji" rel="stylesheet">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+    <div class="nav-status">
+  
+<% if current_user %>
+  <div class="pic_info-nav">
+  <%= image_tag current_user.avatar.url, class:"pic-nav" %>
+
+        
+        <h2><%= link_to 'Log Out', destroy_user_session_path, method: :delete %></h2>
+
+          <h2><%= current_user.name %> </h2>
+        
+       
+          
+         <div class="cart-hide-img"><%= image_tag "http://s3-ap-southeast-2.amazonaws.com/thenewsocialmarketplace-development/shopping-cart-icon.png"%>
+          <div class="cart-hide-content">
+            <%= render_if @cart && @cart.line_items.any?, @cart %>
+    
+              <% end %>
+              </div>
+              </div>
+            <h2><%= @cart.line_items.count %></h2>
+       </div> 
+
+        <div class="clear">
+        </div>
+        </div> 
+
+      <div class="nav">
+      <div class="content-nav">
+
+      <%= link_to 'MarketPlace', streaming_index_url %>
+      
+     <%= link_to 'YourStore', user_products_path_url(current_user.id) %>
+     
+      <%= link_to 'Messages', posts_path %>
+     
+      <%= link_to 'YourProfile', users_path %>
+      
+      </div>
+      </div>
+     <div class="legend">The New Social MarketPlace</div>
+  
+  <div class="main">
+
+      <%= yield %>
+</div>
+  </body>
+</html>

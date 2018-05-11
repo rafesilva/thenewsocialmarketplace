@@ -1,0 +1,89 @@
+
+<body>
+<div class="main">
+		<h1>Your Profile</h1>
+		<p> <%= link_to "Your Store", posts_path, class: "btn btn-default" %></p>
+		
+	 <div class="content">
+		 <div class="profile">
+			 <div class="profile-top">
+				 <div class="pic-sec">
+
+						 <%= image_tag @current_user.avatar.url, class:'pic' %>
+					 <div class="pic_info">
+						 <h2><%= current_user.name %> </h2>
+						 <h3><%= current_user.email %></h3>
+					 </div>
+					 <div class="clear"></div>
+				 </div>
+				 <div class="media">
+					 <div class="tweet">
+						 <h4> <%= @user.products.count %></h4>
+						 <h5>PRODUCTS.</h5>
+                     </div>
+                     <% z = @user.leaders %>
+                        
+					 <div class="follow">
+						 <h4><%= z.count %></h4>
+						 <h5>RATINGS AS A SELLER.</h5>
+                     </div>
+                        <% x = @user.followers %>
+                     <div class="follow2">
+                        <div class="followers">
+                          <h4><%= x.count  %></h4>
+							<div class="followers-list">
+							<h5> RATING AS A BUYER</h5>
+								<%= @user.followers.each do |fle| %>
+									<div class="followers-list-content">
+									<a href="/users/<%= fle.id %>s "><%= fle.name %></a>
+									<%end%>
+								</div>
+							</div>
+                        </div>
+                     </div>
+					 <div class="clear"></div>
+				 </div>
+			 </div>
+			 <div class="profile-bottom">
+				 <ul>
+					 <li><a href="/posts/">Todays Products</a></li> 
+					 <li class="button"><a href="#">Messages<i>0</i></a>
+						 <li class="dropdown">
+								<ul class="icon-navigation">
+									<li><a href="#">Inbox<span>[09]</sapn></a></li>
+									<li><a href="#">Outbox<span>[01]</sapn></a></li>
+									<li><a href="#">Sent messages<span>[03]</sapn></a></li>
+								</ul>
+						 </li>
+					 </li>  
+					 <li><a href="#">Favourites</a></li>  
+					 <li><a href="#">Sellings</a></li>  
+					 <li><a href="/users/<%= current_user.id %>/edit ">Settings</a></li>  
+				 </ul>
+			 </div>
+		 </div>
+	 </div>
+   			<div class="content">
+
+
+
+<div class="settings">
+
+</div>
+</div>
+</div>	
+<% for user in @users %>
+<div class='search'>
+	<strong> <%= user.name %> </strong>
+</div>
+<% end %> 
+<form action="/users" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
+<input type="text" name="user" id="user" />
+<input type="submit" name="commit" value="Search" data-disable-with="Search for people" />
+</form>
+
+  </div>
+  
+
+  </body>
+  </html>

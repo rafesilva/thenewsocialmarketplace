@@ -1,0 +1,2 @@
+class TextCommentsController < ApplicationController
+end
