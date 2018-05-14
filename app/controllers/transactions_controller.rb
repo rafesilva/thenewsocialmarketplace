@@ -28,5 +28,5 @@ class TransactionsController < ApplicationController
     #     flash[:error] = e.message
     #     redirect_to streaming_index_path, notice: "Error"
     #   end
-    # end
+  end
   
