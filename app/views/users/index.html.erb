@@ -1,9 +1,11 @@
 
+
 <body>
 <div class="main">
 		<h1>Your Profile</h1>
-		<p> <%= link_to "Your Store", posts_path, class: "btn btn-default" %></p>
-		
+		<p> <%= link_to "Your Store", products_path, class: "btn btn-default" %></p>
+		<p>Press <%= link_to 'here', search_users_path %> to search for posts.</p>
+
 	 <div class="content">
 		 <div class="profile">
 			 <div class="profile-top">
@@ -50,7 +52,7 @@
 					 <li class="button"><a href="#">Messages<i>0</i></a>
 						 <li class="dropdown">
 								<ul class="icon-navigation">
-									<li><a href="#">Inbox<span>[09]</sapn></a></li>
+									<li><a href="#">[09]</sapn></a></li>
 									<li><a href="#">Outbox<span>[01]</sapn></a></li>
 									<li><a href="#">Sent messages<span>[03]</sapn></a></li>
 								</ul>
@@ -72,18 +74,13 @@
 </div>
 </div>
 </div>	
-<% for user in @users %>
-<div class='search'>
-	<strong> <%= user.name %> </strong>
-</div>
-<% end %> 
-<form action="/users" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
-<input type="text" name="user" id="user" />
-<input type="submit" name="commit" value="Search" data-disable-with="Search for people" />
-</form>
+
+
+
+
 
   </div>
-  
+
 
   </body>
   </html>

@@ -1,11 +1,17 @@
 class User < ActiveRecord::Base
+
+
+
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :confirmable,:omniauthable, :omniauth_providers => [:stripe_connect]
+
+    
     attr_accessor :url
+
+    acts_as_messageable
 
     mount_uploader :avatar, AvatarUploader
 
     validates :email, presence: true, uniqueness: true
-    devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :confirmable,:omniauthable, :omniauthable
-    
 
     has_many :products, foreign_key: :user_id, dependent: :destroy
 
@@ -20,24 +26,39 @@ class User < ActiveRecord::Base
     has_many :comments, foreign_key: :user_id, dependent: :destroy 
     has_many :text_comments, dependent: :destroy
 
+    
+
+    def is_seller?
+      merchants.any?
+    end
+    
+    def can_receive_payments?
+      uid? &&  provider? && access_code? && publishable_key?
+    end
+
 
     def url
+        
         if current_user
             write_attribute :url, true
            else
+
             write_attribute :url, false
-           end
+    end
       
     end  
     
-    
+    def mailboxer_email(object)
+        email
+    end
+
     def following?(leader)
         leaders.include? leader
     end
 
 
     def unfollow!(leader)
-        leaders.destroy leader #####VERY USEFULL!!!!
+        leaders.destroy leader ##### VERY USEFULL!!!!
        
     end
     def follow!(leader)
@@ -57,12 +78,5 @@ class User < ActiveRecord::Base
     # def image= url
     #     self.url_image = url.original_filename
     # end
-    def self.search(term)
-        if term
-          where('name LIKE ?', "%#{term}%").order('id DESC')
-        else
-          order('id DESC') 
-        end
-      end
-    
-end
+
+  end

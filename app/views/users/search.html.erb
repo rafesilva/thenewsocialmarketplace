@@ -1,0 +1,38 @@
+<h1>Elastic search for @users</h1>
+
+<%= form_for :search_user, url: search_users_path, method: :get do |form| %>
+  <%= form.text_field :query, value: params[:search_users].presence && params[:search_users][:query] %>
+  <%= form.submit 'Search' %>
+<% end %>
+
+<% unless @users.nil? %>
+  <% if @users.empty? %>
+    <h2>No users found matching your query.</h2>
+  <% else %>
+    <h2>Search results</h2>
+
+    <table style="width: 100%;">
+      <thead>
+         <tr>
+           <th>Name</th>
+           <th>Emal</th>
+           <th>Products</th>
+           <th>Followers</th>
+          
+         </tr>
+      </thead>
+
+      <tbody>
+        <% @users.each do |post| %>
+          <tr>
+            <td><%= @user.name %></td>
+            <td><%= @user.email %></td>
+            <td><%= @user.products %></td>
+            <td><%= @user.followers %></td>
+            <td><%= link_to 'View', user_path(@user.id) %></td>
+          </tr>
+        <% end %>
+      <tbody>
+    </table>
+  <% end %>
+<% end %>

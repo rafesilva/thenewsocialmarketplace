@@ -1,10 +1,12 @@
 class UsersController < ApplicationController
     
-    #  before_action :authenticate_user!, only: [:follow, :index, :show] 
+    #before_action :authenticate_user!, only: [:follow, :show] 
     include CurrentCart
+
+
     before_action :set_cart 
+
     
-        
             def index
                 @users = User.all
                 user = current_user.id
@@ -12,8 +14,18 @@ class UsersController < ApplicationController
 
             end
 
+
+            def search
+            query = params[:search_users].presence && params[:search_users][:query]
+
+            if query
+                @users = User.search_published(query)
+            end
+            end
+
             def show
-                
+                @user = User.find(params[:id])
+
             end
             
             def edit
@@ -23,14 +35,19 @@ class UsersController < ApplicationController
 
             def update
                 @user = User.find(params[:id])
-                respond_to do |format|
-                    if @user.update(user_params)
-                        format.html { redirect_to @user, notice: 'User was successfully updated.' }
-                    else
-                        format.html { render :edit }
-                    end                
+                if @user.update(user_params)
+                  if @user.stripe_temporary_token.present?
+                    customer = Stripe::Customer.create(
+                      email: @user.email,
+                      source: @user.stripe_temporary_token
+                    )
+                    @user.update_attribute(:stripe_customer_id, customer.id)
+                  end
+                else
+                  render :show
                 end
-            end
+                redirect_to root_path
+              end
 
             def destroy
                  User.find(params[:id]).destroy
@@ -41,7 +58,7 @@ class UsersController < ApplicationController
 
             def new
                 @user = User.new
-                upload
+                
                 redirect_to users_url
                
             end
@@ -76,7 +93,7 @@ class UsersController < ApplicationController
           
     private
             def user_params
-                params.require(:user).permit( :name, :email, :url, :password, :password_confirmation, :avatar)
+                params.require(:user).permit( :name, :email, :url, :password, :password_confirmation, :avatar, :stripe_customer_id, :stripe_temporary_token, :provider ,:uid ,:publishable_key, :access_code)
             end
 
             def upload

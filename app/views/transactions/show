@@ -1,0 +1,30 @@
+.col-xs-12.col-sm-12.col-md-12.col-lg-12
+  .jumbotron.text-left
+    %h2
+      = "Details for Transaction #{@transaction.id}"
+    %p
+      %strong User:
+      = @transaction.user.email
+    %p
+      %strong Merchant:
+      = @transaction.merchant.title
+      = @transaction.merchant.description
+
+    %p
+      %strong Item:
+      = @item.title
+
+    %p
+      %strong Total Cost:
+      = number_to_currency(@transaction.total)
+
+    %p
+      %strong Stripe Payment Made?
+      = @transaction.paid
+
+    %p
+      %strong Stripe Charge ID
+      = @transaction.stripe_charge
+
+    .row.text-center
+      = link_to 'Back', merchants_path, class: 'btn btn-info'

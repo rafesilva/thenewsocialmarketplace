@@ -1,14 +1,14 @@
 <% if line_item == @current_item %>
-
 <% else %>
-
+<div class="inside-cart">
 <% end %>
-<div class="line"><div class="line"><h1> Title </h1><a>:</a>
-<%= line_item.product.title %></div>
-</br>
-<div class="line"><h1> Qtl </h1><a>:</a>
-<%= line_item.quantity %></div>
-</br>
-<div class="line"><h1> </h1><a>|</a>
-<%= number_to_currency(line_item.total_price) %></div></div>
 
+<ul>
+<li><%= line_item.product.title %></li>
+
+<li><%= line_item.quantity %></li>
+
+<li><%= number_to_currency(line_item.total_price) %></li>
+</ul>
+
+</div>

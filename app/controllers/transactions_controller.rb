@@ -1,7 +1,7 @@
 class TransactionsController < ApplicationController
-  include CurrentCart
-
+    include CurrentCart
     before_action :set_cart
+    
     def create
 
       Stripe.api_key = Rails.configuration.stripe[:stripe_secret_key]

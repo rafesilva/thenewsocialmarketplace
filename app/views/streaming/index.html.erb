@@ -1,17 +1,9 @@
+<p><h2>What do you will buy today?</h2></p>
 
-        <div class="btn-search">
-        <%= form_tag(users_path, method: :get) do %>
-          <%= text_field_tag :user, params[:user], class:"btn-search" %>
-          <%= submit_tag 'Search' ,class:"btn-primary" %>
-      
-
-        </div>
-        <% end %>
 <% cache @products do %>
     <% @products.each do |product| %>
         <% cache @products do %>
     <div class="main">
-    <p><h2>What do you will buy today?</h2></p>
   
     </div>
              <div class="profile">
@@ -39,16 +31,16 @@
                              <h3><%= sanitize(product.description) %></h3>
                             
                          
-                           
-                       
+                             <% end %>
+                             <li><%= button_to 'Add to Cart', line_items_path(product_id: product), class:"btn-primary" %></li> 
                          <div class="clear"></div>
                      </div>
                  </div>
                      <ul>
-                         <li><%= button_to 'Add to Cart', line_items_path(product_id: product), class:"btn-primary" %></li> 
                          
-      <% end %>
-      <% end %>
+                         
+                   
+                    <% end %>
       <% end %> 
     
 

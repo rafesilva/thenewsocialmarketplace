@@ -1,0 +1,17 @@
+<ul>
+  <% @users.each do |user| %>
+    <li>
+      <h3>
+        <%= link_to email.try(:highlight).try(:title) ? user.highlight.name[0].html_safe : user.name,
+          controller: "users",
+          action: "show",
+          id: user_.id%>
+      </h3>
+      <% if user.try(:highlight).try(:name) %>
+        <% user.highlight.name.each do |snippet| %>
+          <p><%= snippet.html_safe %>...</p>
+        <% end %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
