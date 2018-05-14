@@ -28,7 +28,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 --*/
 /* reset */
 @import 'bootstrap';
-@import 'bootstrap/theme';
 
 @import 'chosen';
 
