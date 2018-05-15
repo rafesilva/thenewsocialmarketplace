@@ -191,6 +191,20 @@ h3 {
 
 
                                 }
+
+
+                                .nav-bar p {
+
+                                       font-family: 'Monoton', cursive;
+                                        font-size: 40px;
+                                        letter-spacing: 3px;
+                                        color: white;
+
+
+
+
+                                }
+
                                     .word-nav {
 
                                         font-family: 'Libre Baskerville', serif;
@@ -222,6 +236,9 @@ h3 {
                                                         border: 2px solid rgba(0, 0, 0, 0.404);
                                                         border-radius: 7%;
                                                         margin: -6%;
+                                                        -webkit-box-shadow: -30px 7px 67px 8px rgba(0,0,0,0.54);
+                                                        -moz-box-shadow: -30px 7px 67px 8px rgba(0,0,0,0.54);
+                                                        box-shadow: -30px 7px 67px 8px rgba(0,0,0,0.54);
 
 
                                                                 
@@ -425,7 +442,7 @@ h3 {
     margin: 0;
     display: block;
 	background:#f5f5f5;
-	color:#8c8c8c;
+	color:#a7cef9;
 	font-size:1.1em;	
 	transition: 0.5s all;
 	-webkit-transition: 0.5s all;
@@ -434,7 +451,7 @@ h3 {
 }
 .profile-bottom ul li a:hover{
 	color:#fff;
-	background: #333b4a87;
+	background: #94b5f2c4;
 }
 .profile-bottom ul li i {
     background: #374559;
@@ -506,7 +523,7 @@ ul.icon-navigation li:before {
 }
 ul.icon-navigation li a {
 	color: #fff;
-	background: #4f62859c;
+	background: #9cbbf59c;
 }
 /*---------------*/
 
