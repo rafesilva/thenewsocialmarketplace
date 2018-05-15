@@ -1,8 +1,11 @@
+
+
 <% page_header "Your Conversations" %>
+
+<% if notice %>
+<% end %>
+<%= notice %>
 <div class="box-login">
-<li><p><%= link_to 'Start conversation', new_message_path, class: '' %></p></li>
-
-
 
   <% if @box == 'trash' %>
     <p><%= link_to 'Empty trash', empty_trash_conversations_path, class: 'btn btn-danger', method: :delete,
@@ -10,7 +13,7 @@
   <% end %>
   <div class="content">
 
-   <li> <%= render partial: 'conversations/conversation', collection: @conversations %></li>
+    <%= render partial: 'conversations/conversation', collection: @conversations %>
 
 
   <%= will_paginate %>

@@ -53,7 +53,7 @@ img{max-width:100%;}
 /*end reset*/
 /****-----start-body----****/
 body{
-    background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);    font-family: 'Forum', cursive;
+    background-image: linear-gradient(to right, #5aa1ff 0%, #00feb2db 100%);    font-family: 'Forum', cursive;
     background-repeat: no-repeat;
     margin: 1% 12%;
    
@@ -239,7 +239,7 @@ h3 {
                                                         -webkit-box-shadow: -30px 7px 67px 8px rgba(0,0,0,0.54);
                                                         -moz-box-shadow: -30px 7px 67px 8px rgba(0,0,0,0.54);
                                                         box-shadow: -30px 7px 67px 8px rgba(0,0,0,0.54);
-
+                                                        
 
                                                                 
                                                         }
@@ -258,7 +258,7 @@ h3 {
                                                         
                                                     .box-login p {
                                                     
-                                                        color: #001c55;
+                                                        color: #395faa;
                                                         text-align: center;       
                                                         border:1px solid, white;
                                                         }
@@ -330,18 +330,23 @@ h3 {
 
 
 .content{
-	width: 90%;
+	width: 100%;
     margin:0 auto;
+    border: 2px solid rgba(117, 200, 245, 0.303);
 }
 
 .content-posts{
 
     width: 100%;
-	margin:0 auto;
+    margin:0 auto;
+    
 }
 
 .profile {
     margin-top:3em;
+    border: 4px solid rgba(255, 255, 255, 0.57);
+    border-radius: 10%;
+
 }
 
 .profile-posts {
@@ -360,8 +365,9 @@ h3 {
 }
 
 .profile-top {
-	background:#1a2c4dc7;
-	padding:1.5em;
+	background:#0e213dbd;
+    padding:1.5em;
+    border-radius: 10%;
 }
 
 .pic {
@@ -466,6 +472,8 @@ h3 {
     -o-border-radius: 4px;
     font-style: normal;
 }
+
+
 li.button {
 	list-style: none;
 	text-align: left;
@@ -486,12 +494,12 @@ li.button a span{
 margin-right: 22px;
 }
 .dropdown{
-	display:none;
+	display:;
 	padding: 0;
 	width:100%;
 }
 .dropdown li a{
-	border-left: 6px solid #11419a8b;
+	border-left: 6px solid #ffffff;
 	display: block;
 }
 ul.icon-navigation li{
@@ -519,11 +527,12 @@ ul.icon-navigation li:before {
 	top: -0.5%;
 	border-width: 11px 12px 0px 12px;
 	border-style: solid;
-	border-color: #f5f5f5 rgba(250, 248, 248, 0.87);
+	border-color: #f5f5f5 rgba(129, 179, 243, 0.597);
 }
 ul.icon-navigation li a {
 	color: #fff;
-	background: #9cbbf59c;
+    background: #b2c7f3e5;
+    border-radius: 6%;
 }
 /*---------------*/
 
