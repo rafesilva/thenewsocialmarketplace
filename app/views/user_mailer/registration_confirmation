@@ -1,5 +1,5 @@
-Hey <%= @user.name %>,
+Hi <%= @user.name %>,
 
 Thanks for registering! To confirm your registration click the URL below.
 
-<%=  link_to "confirm", confirm_email_url(@user.confirm_token, :confirmation_token => @token)%>
+<%=  link_to "confirm", confirm_email_url(@user.confirm_token, host: "https://nsmp.herokuapp.com/")%>
