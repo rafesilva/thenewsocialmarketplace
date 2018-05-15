@@ -1,9 +1,7 @@
 class UsersController < ApplicationController
     
     before_action :authenticate_user!, only: [:follow, :show] 
-    include CurrentCart
-
-    before_action :user_params   
+    include CurrentCart  
     before_action :set_cart 
 
     
