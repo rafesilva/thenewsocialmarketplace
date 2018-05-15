@@ -2,45 +2,32 @@
 <% if notice %>
 <% end %>
 <%= notice %>
-<div class="profile">
-         <h1>YourStore</h1>
-         <div class="content-login">
+<div class="store">
+     <h1>YourStore</h1>
+     </br>
+     <div><%= link_to 'New product', new_product_path, class:"btn-primary-store" %></div>
+      </br>
         <% @products.each do |product| %>
-            <div class="box-login">
+            <div class="">
           <%  @product = product %>
           <% if current_user.id == @product.user_id %>
-          <div class="store-box"> 
-        <div class="pic-store"><%= image_tag(@product.image_file.url) %></div>
-        </br></br></br>
-           <span><%= image_tag(@product.image_url) %></span>
-           <div class="store-title"> </br>
-           <div><h1><strong><%= @product.title %></strong></h1> </div>
-          <div> <h2><%= @product.description %> </h2>    </div>
+        <div class="pic-store"><%= image_tag(@product.image_file.url) %> <%= image_tag(@product.image_url) %>
         </div>
+        </br></br></br>
+           <div class="store-tile">
+          <h1><strong><%= @product.title %></strong></h1>
+         <h2><%= @product.description %> </h2>    </div>
+       
+         </br>
+  
+      <%= link_to 'Show', @product, class:"btn-primary-store" %>
+      <%= link_to 'Edit', edit_product_path(@product.id), class:"btn-primary-store" %>
+      <%= link_to 'Destroy', user_products_destroy_path(@product), method: :destroy, class:"btn-primary-store", data: { confirm: 'Are you sure?' } %>
+      </br>
+         
+           <% end %>
 
-             
-         <div class="box-store">
-          <div><%= link_to 'New product', new_product_path,class:"btn-primary-store" %></div>
-           <div><%= link_to 'Show', @product, class:"btn-primary-store" %></div>
-            <div><%= link_to 'Edit', edit_product_path(@product.id), class:"btn-primary-store" %></div>
-            <%= link_to 'Destroy', @product, method: :destroy, class:"btn-primary-store", data: { confirm: 'Are you sure?' } %></div>
-            </div> 
-            <% end %>
-            <% end %>
-
-          
-
-           
-
-          <div>
-          <% if current_user.id != @product.user_id %>
-          <%= link_to 'New product', new_product_path %>
-          <%= link_to 'Show', @product %>
-          <%= link_to 'Edit', edit_product_path(@product.id) %>
-          
-          <%= link_to 'Destroy', @product, method: :destroy, data: { confirm: 'Are you sure?' } %>
-          </div>  
-
-       </div>  
-       </div>
-       <% end %>
+           <% end %>
+       
+         </div>
+  

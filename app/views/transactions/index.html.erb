@@ -1,0 +1,29 @@
+.
+        ID
+ 
+        Title & Description
+ 
+        Total
+ 
+        Link
+ 
+        Processed on Stripe?
+ 
+        Stripe Charge ID
+
+  <% @transactions.each do |transaction| %>
+    
+    
+        <%= "Transaction ID: #{transaction.id}" %>
+      
+        <%= transaction.merchant.title %>
+        <%= transaction.merchant.description %>
+     
+        <%= number_to_currency(transaction.total) %>
+      
+        <%= link_to 'Show', transaction %>
+      
+        <%= transaction.paid %>
+      
+        <%= transaction.stripe_charge %>
+        <%end%>

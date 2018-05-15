@@ -1,9 +1,9 @@
     class ChargesController < ApplicationController
       before_action :authenticate_user!
-      before_action :amount_to_be_charged
       include CurrentCart
       before_action :set_cart
-    
+      before_action :amount_to_be_charged
+
       def new
       end
     
@@ -14,7 +14,13 @@
         charge = StripeTool.create_charge(customer_id: customer.id, 
                                           amount: @amount,
                                           description: 'Rails Stripe customer')
-    
+                                          
+        @cart = nil                                    
+      redirect_to thanks_path
+
+      def thanks
+      end
+      
       rescue Stripe::CardError => e
         flash[:error] = e.message
         @cart_id = nil
@@ -27,4 +33,6 @@
           amount = (@cart.total_price)*100
           @amount = amount.to_i
         end
+
+      
     end

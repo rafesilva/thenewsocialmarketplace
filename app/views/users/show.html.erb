@@ -13,19 +13,19 @@
 <%end%>
 </div>
 <div class="profile">
-<h2><%= current_user.name %></h2>
-<h2><%= current_user.email %></h2>
-<h2><% current_user.products.each do |product| %></h2>
+<h2><%= @user.name %></h2>
+<h2><%= @user.email %></h2>
+<h2><% @user.products.each do |product| %></h2>
  <%= product.title %></a>
   <%= product.description %>
 
   <% end %>
-<h2><% current_user.products.each do |product| %></h2>
+<h2><% @user.products.each do |product| %></h2>
  <%= product.title %></a>
   <%= product.description %>
 </div>
 
-<% if current_user %>
+<% if @user %>
 <% if current_user != @user && !current_user.following?(@user) %>
 <% end %>
 

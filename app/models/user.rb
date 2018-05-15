@@ -1,11 +1,11 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
+    attr_accessor :url
+    attr_accessor :stripe_temporary_token
 
 
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :confirmable,:omniauthable, :omniauth_providers => [:stripe_connect]
 
-    
-    attr_accessor :url
 
     acts_as_messageable
 
@@ -13,8 +13,9 @@ class User < ActiveRecord::Base
 
     validates :email, presence: true, uniqueness: true
 
-    has_many :products, foreign_key: :user_id, dependent: :destroy
-
+    has_many :products, dependent: :destroy
+    has_many :merchants, dependent: :destroy
+    has_many :transactions
     has_many :subscriptions, foreign_key: :follower_id, dependent: :destroy
     has_many :leaders, through: :subscriptions
     has_many :reverse_subscriptions, foreign_key: :leader_id, class_name: 'Subscription', dependent: :destroy 
@@ -26,14 +27,30 @@ class User < ActiveRecord::Base
     has_many :comments, foreign_key: :user_id, dependent: :destroy 
     has_many :text_comments, dependent: :destroy
 
-    
 
-    def is_seller?
-      merchants.any?
-    end
     
+    def is_seller?
+        merchants.any?
+      end
+
+    def make_admin
+      self.update_attributes!(admin: !admin)
+    end
+  
+    def add_credit(amount)
+      amount = BigDecimal.new(amount)
+      new_total = credit + amount
+      update_attributes!(credit: new_total)
+    end
+  
+   
+  
     def can_receive_payments?
       uid? &&  provider? && access_code? && publishable_key?
+    end
+  
+    def can_make_payments?
+      stripe_customer_id?
     end
 
 

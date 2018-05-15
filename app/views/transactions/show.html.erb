@@ -1,0 +1,29 @@
+
+    <h2?
+      <%= "Details for Transaction #{@transaction.id}" %>
+    <p>
+       User:
+      <%= @transaction.user.email %>
+    <p>
+      Merchant:
+      <%= @transaction.merchant.title %>
+      <%= @transaction.merchant.description %>
+
+    <p>
+      Item:
+      <%= @item.title %>
+
+    <p>
+      Total Cost:
+      <%= number_to_currency(@transaction.total) %>
+
+    <p>
+     Stripe Payment Made?
+      <%= @transaction.paid %>
+
+    <p>
+      Stripe Charge ID
+      <%= @transaction.stripe_charge %>
+
+    
+      <%= link_to 'Back', merchants_path, class: 'btn btn-info' %>

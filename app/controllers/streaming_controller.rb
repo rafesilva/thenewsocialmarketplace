@@ -1,7 +1,8 @@
 class StreamingController < ApplicationController
+    before_action :authenticate_user!
     include CurrentCart
     before_action :set_cart
-    before_action :authenticate_user!
+    
 
     def index
         @products = Product.order(:title)

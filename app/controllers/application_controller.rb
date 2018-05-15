@@ -2,8 +2,6 @@ class ApplicationController < ActionController::Base
 
     protect_from_forgery with: :exception 
     alias_method :devise_current_user, :current_user
-   
-
     before_action :assign_env_variable
 
     # Overwriting the sign_out redirect path method
@@ -12,12 +10,10 @@ class ApplicationController < ActionController::Base
     end
   
     def assign_env_variable
-      gon.stripe_key = ENV['PUBLISHABLE_KEY']
+      gon.stripe_key = ENV['STRIPE_PUBLISHABLE_KEY']
     end
     
-    def me
-      @current_user = @current_user_dv
-    end
+  
     
     
     private
@@ -25,7 +21,6 @@ class ApplicationController < ActionController::Base
     def current_user
         if params[:user_id].blank?
           devise_current_user
-          @current_user_dv = devise_current_user
 
 
         else
@@ -52,8 +47,8 @@ class ApplicationController < ActionController::Base
 
    
     def configure_permitted_parameters
-      devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :avatar, :url])
-      devise_parameter_sanitizer.permit(:sign_in, keys: [:name, :avatar, :url])
+      devise_parameter_sanitizer.permit(:sign_up, keys: [ :name, :email, :url, :password, :password_confirmation, :avatar, :stripe_customer_id, :stripe_temporary_token, :provider ,:uid ,:publishable_key, :access_code])
+      devise_parameter_sanitizer.permit(:sign_in, keys: [ :name, :email, :url, :password, :password_confirmation, :avatar, :stripe_customer_id, :stripe_temporary_token, :provider ,:uid ,:publishable_key, :access_code])
       
     end
 

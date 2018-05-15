@@ -1,18 +1,18 @@
-<div class="content-login">
+<div class="store">
 <%= form_with(model: @product, local: true) do |form| %>
   <% if product.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+    <div class="error_explanation">
+      <h2>Something went wrong, you got  <%= pluralize(product.errors.count, "error.") %> please review the following fields erros:</h2>
 
       <ul>
       <% product.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <li> <%= message %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
- 
-<div class="box-login">
+ </br>
+<div class="store-tile">
     <%= form.label :title %>
     <%= form.text_field :title, class:"form-control" %>
 
@@ -27,8 +27,9 @@
 
     <%= form.label :price %>
     <%= form.text_field :price, class:"form-control" %>
-  
-    <%= form.submit 'Add your product' , class:"btn-primary" %>
+        </br>
 </div>
+<%= form.submit 'Add your product' , class:"btn-primary" %>
+
     <% end %>
 </div>

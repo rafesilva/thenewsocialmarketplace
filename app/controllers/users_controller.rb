@@ -1,14 +1,15 @@
 class UsersController < ApplicationController
     
-    #before_action :authenticate_user!, only: [:follow, :show] 
+    before_action :authenticate_user!, only: [:follow, :show] 
     include CurrentCart
 
-
+    before_action :user_params   
     before_action :set_cart 
 
     
             def index
-                @users = User.all
+                
+                @users = User.order('created_at DESC').paginate(page: params[:page], per_page: 30)                
                 user = current_user.id
                 @user= User.find(user)
 
@@ -42,11 +43,11 @@ class UsersController < ApplicationController
                       source: @user.stripe_temporary_token
                     )
                     @user.update_attribute(:stripe_customer_id, customer.id)
-                  end
+                  
                 else
                   render :show
                 end
-                redirect_to root_path
+                end
               end
 
             def destroy

@@ -2,9 +2,25 @@
 
 <body>
 <div class="main">
+
+<% page_header "Users" %>
+
+<%= will_paginate %>
+
+<ul>
+  <% @users.each do |user| %>
+    <li>
+      <strong><%= user.name %></strong>
+      <% unless current_user == user %>
+        <%= link_to 'Send message', new_message_path(to: user.id), class: 'btn btn-default btn-sm' %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<%= will_paginate %>
 		<h1>Your Profile</h1>
 		<p> <%= link_to "Your Store", products_path, class: "btn btn-default" %></p>
-		<p>Press <%= link_to 'here', search_users_path %> to search for posts.</p>
 
 	 <div class="content">
 		 <div class="profile">
@@ -23,23 +39,25 @@
 						 <h4> <%= @user.products.count %></h4>
 						 <h5>PRODUCTS.</h5>
                      </div>
-                     <% z = @user.leaders %>
                         
 					 <div class="follow">
-						 <h4><%= z.count %></h4>
+						 <h4><%= @user.leaders.count %></h4>
 						 <h5>RATINGS AS A SELLER.</h5>
                      </div>
-                        <% x = @user.followers %>
+                        
                      <div class="follow2">
                         <div class="followers">
-                          <h4><%= x.count  %></h4>
+                          <h4><%= @user.followers.count  %></h4>
 							<div class="followers-list">
 							<h5> RATING AS A BUYER</h5>
-								<%= @user.followers.each do |fle| %>
+								<% @user.followers.each do |fle| %>
 									<div class="followers-list-content">
-									<a href="/users/<%= fle.id %>s "><%= fle.name %></a>
-									<%end%>
+									<a href="/users/<%= fle.id %> "><%= fle.name %></a>
+									</div>
+
+									<% end %>
 								</div>
+								
 							</div>
                         </div>
                      </div>
@@ -49,7 +67,7 @@
 			 <div class="profile-bottom">
 				 <ul>
 					 <li><a href="/posts/">Todays Products</a></li> 
-					 <li class="button"><a href="#">Messages<i>0</i></a>
+					 <li class="button" src"href://<%= link_to 'Conversations', conversations_path%>"><i>0</i></a>
 						 <li class="dropdown">
 								<ul class="icon-navigation">
 									<li><a href="#">[09]</sapn></a></li>
@@ -58,8 +76,7 @@
 								</ul>
 						 </li>
 					 </li>  
-					 <li><a href="#">Favourites</a></li>  
-					 <li><a href="#">Sellings</a></li>  
+					 <li><a href="#">Favorites</a></li>  
 					 <li><a href="/users/<%= current_user.id %>/edit ">Settings</a></li>  
 				 </ul>
 			 </div>

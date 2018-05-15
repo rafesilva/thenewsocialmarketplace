@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :charges, only: [:new, :create]
+  get 'merchants/index'
   ## OLD SESSION, WORKING FOR WITH DEVISE_SCOPES.
 
 
@@ -8,6 +8,34 @@ Rails.application.routes.draw do
   
   devise_for :users,  :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
   
+  devise_scope :user do
+    authenticated :user do
+      root 'merchants#index'
+    end
+    unauthenticated do
+      root 'devise/sessions#new'
+    end
+  end
+
+  resources :admin do
+    resources :users do
+      collection do
+        put :approve
+      end
+    end
+  end
+
+  resources :transactions
+
+  resources :merchants do
+    resources :items
+    resources :transactions
+  end
+
+  resources :users do
+    resources :merchants
+    resources :transactions
+  end  
     resources :users, only: [ :index, :show, :edit, :update ] 
 
         as :user do
@@ -21,23 +49,21 @@ Rails.application.routes.draw do
             post 'unfollow/:id', to: 'users#unfollow', as: 'unfollow_user'
 
             get 'users/:id/products' => 'products#index', :as => :user_products_path
+            post 'users/:id/products' => 'products#destroy', :as => :user_products_destroy
+         
+            get 'thanks', to: 'charges#thanks', as: 'thanks'
 
-
-            
-            resources :users do
-        
-              collection do
-            
-                get :search
-              end
-
-            end
+           
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  resources :charges, only: [:new, :create]
+
 
   resources :messages, only: [:new, :create]
 
 
   resources :conversations, only: [:index, :show, :destroy]
+ 
 
   resources :conversations, only: [:index, :show, :destroy] do
     collection do
@@ -52,9 +78,16 @@ Rails.application.routes.draw do
 
   resources :conversations, only: [:index, :show, :destroy] do
     member do
+      post :mark_as_read
+    end
+  end
+
+  resources :conversations, only: [:index, :show, :destroy] do
+    member do
       post :reply
     end
   end
+
   
   resources :purchases, only: [:show]
   

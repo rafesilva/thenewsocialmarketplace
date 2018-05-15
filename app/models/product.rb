@@ -1,11 +1,10 @@
 class Product < ApplicationRecord
     
-    before_destroy :ensure_not_referenced_by_any_line_item
     mount_uploader :image_file, ImageFileUploader
     
-    has_many :line_items, dependent: :destroy
+    has_many :line_items
     
-    belongs_to :user, dependent: :destroy
+    belongs_to :user, foreign_key: :user_id
 
     validates :user_id, presence: true 
 

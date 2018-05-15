@@ -1,0 +1,10 @@
+    <%= form_for @merchant, html: {class:'form-horizontal'} do |f| %>
+      
+        <%= f.label :title, class: 'control-label' %>
+        <%= f.text_field :title, class:'form-control' %>
+      
+        <%= f.label :description, class: 'control-label' %>
+        <%= f.text_field :description, class:'form-control' %>
+      
+        <%= f.submit class: "btn btn-success" %>
+        <%end%>

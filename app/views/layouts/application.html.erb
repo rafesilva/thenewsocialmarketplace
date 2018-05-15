@@ -9,14 +9,11 @@
 
     <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville|Skranji" rel="stylesheet">
 
-
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
-
-
-
-    <%= csrf_meta_tags %>
+    <%= Gon::Base.render_data %>
 
     <%= csp_meta_tag %>
+    <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -28,11 +25,12 @@
   <body>
 
         <div class="pic_info-nav">
-        <% if user_signed_in? %>
+       
                 <ul>
-               
-                <li><% @itemq = [] %><% @cart.line_items.each do |item| %> <% item.quantity %> <% @itemq << item.quantity  %> <% end %><%= @itemq.sum %>  </li>  
-            
+                <% if user_signed_in? %>
+                <% if @cart.line_items != nil %>
+                <li><% @cart.line_items.each do |item| %> <% item.quantity %><% itemq = [] %> <% itemq << item.quantity  %> <%= itemq.sum %> <% end %> </li>  
+                  <% end %>                 
 
              <div class="cart-hide"><%= image_tag "http://s3-ap-southeast-2.amazonaws.com/thenewsocialmarketplace-development/shopping-cart-icon.png", class:"a"%>
                       <div class="cart-hide-content">
@@ -44,10 +42,11 @@
               <li><%= current_user.name %></li>
               <li><%= link_to 'Log Out', destroy_user_session_path, method: :delete %></li>
               <li><%= image_tag current_user.avatar.url, class:"pic-nav" %></li>
+             
+
               <% else %>
               <li><%= link_to 'Log In', new_user_session_path %></li>
               <% end %>
-
                </ul>
             
         </div>

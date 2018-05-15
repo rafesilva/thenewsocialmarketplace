@@ -1,0 +1,46 @@
+
+    <h4>
+      <%= @merchant.title %></h4>
+    <p>
+     <%= @merchant.description %></p>
+    
+      <%> if current_user == @merchant.owner %>
+        <%= link_to 'Edit', edit_merchant_path(@merchant), class: 'btn btn-info' %>
+        <%= link_to 'Back', merchants_path, class: 'btn btn-info' %>
+          </br >
+          <%= link_to 'Add New Item', new_merchant_item_path(@merchant), class: 'btn btn-lg btn-success'%>
+      <% else %>
+        <%= link_to 'Back', merchants_path, class: 'btn btn-info'%>
+  <% if @merchant.owner.can_receive_payments?%>
+    
+      <% if @items.any? %>
+        <% @items.each do |item| %>
+ 
+            
+            
+                <h3>
+                  <%= item.title %> </h3>
+                <p>
+                  <%= item.description %> </p>
+                <p>
+                  <%= "$#{item.price}" %> </p>
+              
+                
+                  <%= form_for @transaction do |f| %>
+                    <%= f.hidden_field :user_id, value: current_user.id %>
+                    <%= f.hidden_field :merchant_id, value: @merchant.id %>
+                    <%= f.hidden_field :item_id, value: item.id %>
+                    <%= f.hidden_field :total, value: item.price %>
+                    <%= f.submit 'BUY', class: 'btn btn-success'%>
+              <% if current_user == @merchant.owner %>
+                
+                
+                    
+                     <%= link_to 'Edit', edit_merchant_item_path(@merchant, item) %>
+                  
+                  
+                      <%= link_to 'Destroy', merchant_item_path(@merchant, item), method: :delete %>
+  <% else %>
+    
+      <h4>
+        This merchant hasn't registered with stripe yet :( </h4>

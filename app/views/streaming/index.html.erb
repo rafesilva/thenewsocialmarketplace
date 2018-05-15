@@ -10,9 +10,15 @@
                  <div class="profile-top">
                      <div class="pic-sec">
                          <div class="pic">
-                        <spam> <%= image_tag product.image_file.url %> </spam>
-                                    <% else %>
+                       <%= image_tag product.image_file.url %> 
+                           <% if product.image_url.nil? %>
+
+                                <% else %>
+                                <%= image_tag(product.image_url) %>
+
                          </div>
+                         <% end %>
+
                          <div class="pic_info">
                                 <h2>Seller:</h2>
                              <h1><%= product.user.name %> </h1>
@@ -27,15 +33,19 @@
                      </div>
                      <div class="media">
                     
-                         <h2>Description</h2>
+                         <h1>Description</h1>
                              <h3><%= sanitize(product.description) %></h3>
                             
                          
+                          
+                             </div>
                              <% end %>
-                             <li><%= button_to 'Add to Cart', line_items_path(product_id: product), class:"btn-primary" %></li> 
+
+                             </div>
+                            <%= button_to 'Add to Cart', line_items_path(product_id: product), class:"btn-primary" %>
                          <div class="clear"></div>
-                     </div>
-                 </div>
+                     
+                
                      <ul>
                          
                          

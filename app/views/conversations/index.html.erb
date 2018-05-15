@@ -1,17 +1,29 @@
 <% page_header "Your Conversations" %>
+<div class="box-login">
+<li><p><%= link_to 'Start conversation', new_message_path, class: '' %></p></li>
 
-    <%= render partial: 'conversations/conversation', collection: @conversations %>
+
+
+  <% if @box == 'trash' %>
+    <p><%= link_to 'Empty trash', empty_trash_conversations_path, class: 'btn btn-danger', method: :delete,
+                   data: {confirm: 'Are you sure?'} %></p>
+  <% end %>
+  <div class="content">
+
+   <li> <%= render partial: 'conversations/conversation', collection: @conversations %></li>
 
 
   <%= will_paginate %>
 
+  </br>
 
-      <%= mailbox_section 'inbox', @box %>
-      <%= mailbox_section 'sent', @box %>
-      <%= mailbox_section 'trash', @box %>
+  </br>
+      <p><%= mailbox_section 'inbox', @box, class: 'btn btn-lg btn-primary'  %></p>
+      <p><%= mailbox_section 'sent', @box, class: 'btn btn-lg btn-primary'  %></p>
+      <p><%= mailbox_section 'trash', @box, class: 'btn btn-lg btn-primary'  %></p>
  
-
-  
+      </div>
+      </div>
   <% if @box == 'trash' %>
-    <%= link_to 'Empty trash', empty_trash_conversations_path, class: 'btn btn-danger', method: :delete,data: {confirm: 'Are you sure?'} %>
+    <p><%= link_to 'Empty trash', empty_trash_conversations_path, class: 'btn btn-lg btn-primary' , method: :delete,data: {confirm: 'Are you sure?'} %></p>
   <% end %>

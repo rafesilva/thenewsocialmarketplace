@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
-  
-  include CurrentCart
   before_action :authenticate_user! 
+
+  include CurrentCart
   before_action :set_cart
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
@@ -10,6 +10,7 @@ class ProductsController < ApplicationController
   def index
     @user = User.find(params[:id])
     @products = Product.all
+
   end
 
   
@@ -35,7 +36,7 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        format.html { redirect_to @product, notice: 'Product was successfully created.' }
+        format.html { redirect_to user_products_path_path(@product.user_id), notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
         format.html { render :new }
@@ -66,12 +67,11 @@ class ProductsController < ApplicationController
   # DELETE /products/1
   # DELETE /products/1.json
   def destroy
-    @product = current_user.products.build(product_params)
+    
     @product.destroy
-
-
     respond_to do |format|
-      format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
+     
+      format.html { redirect_to products_path, notice: 'Product was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -84,6 +84,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:title, :description, :image_file, :image_url, :price)
+      params.require(:product).permit(:title, :description, :image_file, :image_url, :price, :user_id)
     end
 end

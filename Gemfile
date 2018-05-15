@@ -96,6 +96,7 @@ gem 'elasticsearch-model'
 gem "mailboxer"
 
 gem 'bootstrap-will_paginate'
+
 gem 'will_paginate'
 
 gem 'gravatar_image_tag'

@@ -20,6 +20,12 @@ class ConversationsController < ApplicationController
       @conversations = @conversations.paginate(page: params[:page], per_page: 10)
     end
 
+    def mark_as_read
+      @conversation.mark_as_read(current_user)
+      flash[:success] = 'The conversation was marked as read.'
+      redirect_to conversations_path
+    end
+    
     def empty_trash
         @mailbox.trash.each do |conversation|
           conversation.receipts_for(current_user).update_all(deleted: true)
