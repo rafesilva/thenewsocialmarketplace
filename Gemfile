@@ -104,3 +104,5 @@ gem 'gravatar_image_tag'
 gem 'chosen-rails'
 
 gem 'gon'
+
+gem 'sass-rails', '~> 5.0'
