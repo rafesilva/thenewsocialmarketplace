@@ -54,7 +54,8 @@ img{max-width:100%;}
 /*end reset*/
 /****-----start-body----****/
 body{
-    background-image: linear-gradient(to right, #5e9ef2 0%, #00feb2db 100%);    font-family: 'Forum', cursive;
+    background-image: linear-gradient(to right, #000000 0%, #00feb2db 100%);    
+    font-family: 'Forum', cursive;
     background-repeat: no-repeat;
     margin: 1% 12%;
    
