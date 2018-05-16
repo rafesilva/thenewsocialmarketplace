@@ -4,6 +4,14 @@
 <% if notice %>
 <% end %>
 <%= notice %>
+
+<%= form_tag(users_path, method: :get) do %>
+    User <%= text_field_tag :name, params[:name] %>
+    <%= submit_tag 'Search', name: nil %>
+  <% end %>
+
+
+
 <div class="main">
 
 <% page_header "Users" %>
@@ -15,7 +23,7 @@
     <li>
       <strong><%= user.name %></strong>
       <% unless current_user == user %>
-        <%= link_to 'Send a message', new_message_path(to: user.id), class: 'btn btn-default btn-sm' %>
+        <%= link_to 'Send a message', new_message_path(to: user.id), class: '' %>
       <% end %>
     </li>
   <% end %>
@@ -96,7 +104,7 @@
 </div>	
 
 
-
+<%= render 'search' %>
 
 
   </div>

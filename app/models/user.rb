@@ -53,6 +53,21 @@ class User < ApplicationRecord
       stripe_customer_id?
     end
 
+    def self.search(search)
+        if search
+    
+            @user = User.find_by( name: search)
+            if @user
+                self.where(user_id: user)
+          else
+            @user = User.all
+          end
+        else
+            User.all
+      end
+    end
+    
+
 
     def url
         

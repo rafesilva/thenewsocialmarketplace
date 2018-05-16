@@ -1,38 +1,63 @@
+<h1>Credencials</h1>
+</br>
 <div class="main">
-  <h1>User</h1>
+ 
+
+</br></br>
+<div class="box-login">
 
 
-<div class="content-login">
 
-<div class="box-longin">
-<% if current_user %>
-<div>
-<%= image_tag current_user.avatar.url, class:"pic" %>
+<div class="rb"><%= link_to "Good Seller?", follow_user_path(@user.id), method: :post, class: "good_seller" %>
+<% g = @user.followers.nil? %> 
+<% if g == false %> 
+<div class="img_rating"><%= image_tag("https://s3-ap-southeast-2.amazonaws.com/thenewsocialmarketplace-development/star-rating.png") %>
 </div>
 <% else %>
-<%end%>
+
+<% end %>
 </div>
+
 <div class="profile">
+<% if current_user %>
+
+<%= image_tag @user.avatar.url, class:"pic" %>
+<% if current_user == @user && !current_user.following?(@user) %>
+<% else %>
+
+<% end %>
+
+<% end %>
 <h2><%= @user.name %></h2>
 <h2><%= @user.email %></h2>
-<h2><% @user.products.each do |product| %></h2>
- <%= product.title %></a>
+
+
+
+
+
+
+</br></br></br></br>
+<div class="products">
+<% @user.products.each do |product| %>
+  </br>
+  <a  href="/products/<%= product.id %>"><%= product.title %></a>
+ </br>
   <%= product.description %>
+  </br>
 
   <% end %>
-<h2><% @user.products.each do |product| %></h2>
- <%= product.title %></a>
-  <%= product.description %>
+
+
 </div>
-
-
 <% if current_user != @user && !current_user.following?(@user) %>
-<p><%= link_to "Follow", follow_user_path(@user.id), method: :post, class: "btn btn-default" %></p>
-<p><%= link_to "Home", root_url, class: "btn btn-default" %></p>
+
+
+
+
 <%else%>
 <p><%= link_to "Home", root_url, class: "btn btn-default" %></p>
 
-<% end %>
+
 
  <% end %>
 <div>

@@ -3,8 +3,8 @@
 <% if @user.is_seller? %>
    <% unless @user.can_receive_payments? %>
         <h4>You wont be able to sell items until you register with Stripe!</h4>
-        <%= link_to 'Connect', stripe_url, class: '',  target: '_blank' %>
-        <%= @merchants.each do |merchant| %>
+            <%= link_to 'Connect', stripe_url, class: '',  target: '_blank' %>
+            <%= @merchants.each do |merchant| %>
         <h3><%= merchant.title %></h3>
         <p><%= merchant.description %></p>
 
@@ -12,19 +12,14 @@
           
                 <%= link_to 'Show', merchant %>
             
-            
                 <%= link_to 'Edit', edit_merchant_path(merchant) %>
-            
             
                 <%= link_to 'Destroy', merchant, method: :delete, data: { confirm: 'Are you sure?' } %>
         <% else %>
           
-          
-          
                 <%= link_to 'Show', merchant %>
 
 </br>
-
 
     <%= link_to 'New Merchant', new_user_merchant_path(@user) %>
   

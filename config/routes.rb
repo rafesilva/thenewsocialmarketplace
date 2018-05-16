@@ -95,6 +95,7 @@ Rails.application.routes.draw do
 
   resources :products
   
+  resources :tasks
   resources :line_items
   resources :carts
   resources :text_comments

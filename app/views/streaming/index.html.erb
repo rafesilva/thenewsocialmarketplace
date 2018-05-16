@@ -1,7 +1,9 @@
+
+  <% if notice %>
+  <% end %>
+  <%= notice %>
 <p><h1>What do you will buy today?</h1></p>
-    <% if notice %>
-    <% end %>
-    <%= notice %>
+  </br></br>
     <div class="store">
 <% cache @products do %>
     <% @products.each do |product| %>
@@ -9,8 +11,7 @@
     <div class="main">
   
     </div>
-             <div class="profile">
-                 <div class="profile-top">
+             </br></br>
                      <div class="pic-sec">
                          <div class="pic">
                        <%= image_tag product.image_file.url %> 
@@ -24,7 +25,7 @@
 
                          <div class="pic_info">
                                 <h2>Seller:</h2>
-                             <h1><%= product.user.name %> </h1>
+                             <a  href="/users/<%= product.user.id %>" ><%= product.user.name %></a>
                              </br>
                              <h2><%= product.title %></h2>
                              </br>
@@ -36,7 +37,7 @@
                      </div>
                      <div class="media">
                     
-                         <h1>Description</h1>
+                         <h2>Description</h2>
                              <h3><%= sanitize(product.description) %></h3>
                             
                          

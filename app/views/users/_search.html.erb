@@ -1,0 +1,12 @@
+SEARCH FOR USER 
+<%= form_tag(tasks_path, method: :get) do %>
+    User <%= text_field_tag :name, params[:name] %>
+    <%= submit_tag 'Search'%>
+  <% end %>
+
+
+  <% @users.each do |user| %>
+    <ul>
+        <li><%= link_to user.name, user_path(user) %></li></br>
+    </ul>
+        <% end %>

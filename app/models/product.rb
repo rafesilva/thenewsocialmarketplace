@@ -2,7 +2,7 @@ class Product < ApplicationRecord
     
     mount_uploader :image_file, ImageFileUploader
     
-    has_many :line_items
+    has_many :line_items, dependent: :delete_all
     
     belongs_to :user, foreign_key: :user_id
 

@@ -53,9 +53,8 @@ img{max-width:100%;}
 /*end reset*/
 /****-----start-body----****/
 body{
-    background-color: black;
-    font-family: 'Forum', cursive;
-    background-repeat: no-repeat;
+    background-image: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+            background-repeat: no-repeat;
     margin: 1% 12%;
    
 }
@@ -160,7 +159,7 @@ h3 {
                                                                                                     }
                                                                                                     .img-connect {
 
-                                                                                                        width:50px;
+                                                                                                        width:200px;
 
                                                                                                     }
                         
@@ -182,13 +181,13 @@ h3 {
                                 text-align:center;
                                 vertical-align: center;
                                 display: inline-flex;
-                                color: white;    
+                                color: rgba(255, 249, 249, 0.172);    
                             }
                                 .nav-bar li {
                                     position: relative;
-                                    border: 5px solid rgba(255, 255, 255, 0.075);
+                                    border: 5px solid rgba(255, 255, 255, 0.864);
                                     margin: 10px;
-                                    border-radius: 20% ;
+                                    border-radius: 10% ;
 
 
                                 }
@@ -212,15 +211,15 @@ h3 {
                                         font-size: 200%;
                                         text-align: center;
                                         letter-spacing: 1px;
-                                        background: #81b2f317;
-                                        border-radius: 80%;
+                                        background: #fafcffd7;
+                                        border-radius: 60%;
                                         }
 
 
                             main {
                         
                             padding: 22%;
-                            background: rgba(29, 156, 240, 0.466);
+                            background: rgba(2, 46, 111, 0.563);
                             margin: 5s;
                             position: relative;
                             text-align: center;
@@ -328,6 +327,22 @@ h3 {
 
                                                                             }
    
+                                                                             .img_rating {
+                                                                                width: 30px;
+
+                                                                            }
+
+
+                                                                            .rb {
+                                                                                display: inline-flex;
+                                                                                background: white;
+
+                                                                            }
+.good_seller {
+    width:100%;
+    font-size: 15px;
+
+}
 
 
 .content{
@@ -360,15 +375,16 @@ h3 {
 
 .profile-post {
 
-    margin-top:3em;
+    margin-top:4em;
     width: 100%;
 
 }
 
 .profile-top {
-	background:#0e213dbd;
-    padding:1.5em;
-    border-radius: 10%;
+	background:#fbfdf834;
+    padding:1em;
+    border-radius: 15%;
+    border: 1px solid rgba(255, 255, 255, 0.357);
 }
 
 .pic {
@@ -381,7 +397,7 @@ h3 {
 .pic img {
 	width:100%;
 	border-radius:35%;
-	border:3px solid rgba(255, 255, 255, 0.808);
+	border:3px solid rgba(106, 97, 97, 0.808);
 }
 
 .pic_info {
@@ -392,13 +408,13 @@ h3 {
 	padding-top: 2em;
 }
 .pic_info h2 {
-	color:#fff;
+	color:rgb(75, 71, 71);
 	font-size:1.5em;
 	font-weight: 600;
 }
 
 .pic_info h3 {
-	color:#fff;
+	color:rgb(49, 46, 46);
 	font-size:1.1em;
 	text-transform:uppercase;
 }
@@ -406,7 +422,7 @@ h3 {
 .media {
 	margin-top:1em;
 	padding-top:1em;
-	border-top:1px solid rgba(255, 255, 255, 0.26);
+	border-top:1px solid rgba(255, 255, 255, 0.344);
 }
 
 .tweet {
@@ -461,7 +477,7 @@ h3 {
 	background: #94b5f2c4;
 }
 .profile-bottom ul li i {
-    background: #374559;
+    background: #8e9db3;
     float: right;
     padding: 4px 12px;
     font-size: 13px;

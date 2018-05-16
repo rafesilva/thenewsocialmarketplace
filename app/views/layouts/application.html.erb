@@ -32,7 +32,7 @@
                 <ul>
                 <% if user_signed_in? %>
                 <% if @cart.line_items != nil %>
-                <li><% @cart.line_items.each do |item| %> <% item.quantity %><% itemq = [] %> <% itemq << item.quantity  %> <%= itemq.sum %> <% end %> </li>  
+                <li><% @itemq = [] %><% @cart.line_items.each do |item| %> <% item.quantity %> <% @itemq << item.quantity  %>  <% end %> <%= @itemq.sum %></li>  
                   <% end %>                 
 
              <div class="cart-hide"><%= image_tag "http://s3-ap-southeast-2.amazonaws.com/thenewsocialmarketplace-development/shopping-cart-icon.png", class:"a"%>
@@ -63,9 +63,9 @@
               <ul>
               <li><%= link_to 'Marketplace', root_path, class:"word-nav" %></li>
               <li><%= link_to 'Store', user_products_path_url(current_user.id), class:"word-nav" %></li>
-              <li><%= link_to 'Messages', posts_path, class:"word-nav" %></li>
+              <li><%= link_to 'Blog', posts_path, class:"word-nav" %></li>
               <li><%= link_to 'Profile', users_path, class:"word-nav" %></li>
-              <li><%= link_to 'Conversations', conversations_path, class:"word-nav" %></li>
+              <li><%= link_to 'Messages', conversations_path, class:"word-nav" %></li>
               </ul>
               <% else %>
              

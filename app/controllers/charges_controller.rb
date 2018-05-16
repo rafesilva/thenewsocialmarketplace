@@ -15,15 +15,16 @@
                                           amount: @amount,
                                           description: 'Rails Stripe customer')
                                           
-        @cart = nil                                    
-      redirect_to thanks_path
+                                          @cart.destroy
+                                          redirect_to thanks_path
 
       def thanks
+        
       end
-      
+
       rescue Stripe::CardError => e
         flash[:error] = e.message
-        @cart_id = nil
+        @cart.destroy
         redirect_to new_charge_path
       end
     
