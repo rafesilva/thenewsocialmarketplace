@@ -41,10 +41,10 @@
                     </div>
                     </div>
 
-                    <li><%= image_tag current_user.avatar.url, class:"pic-nav" %></li>
               <li><%= current_user.name %></li>
               <li><%= link_to 'Log Out', destroy_user_session_path, method: :delete %></li>
-             
+              <li><%= image_tag current_user.avatar.url, class:"pic-nav" %></li>
+
 
               <% else %>
               <li><%= link_to 'Log In', new_user_session_path %></li>

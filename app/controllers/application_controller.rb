@@ -1,8 +1,8 @@
 class ApplicationController < ActionController::Base
-
+     before_action :assign_env_variable
     protect_from_forgery with: :exception 
     alias_method :devise_current_user, :current_user
-    before_action :assign_env_variable
+
 
     # Overwriting the sign_out redirect path method
     def after_sign_out_path_for(resource)
@@ -13,7 +13,8 @@ class ApplicationController < ActionController::Base
       gon.stripe_key = ENV['STRIPE_PUBLISHABLE_KEY']
     end
     
-  
+
+    # Overwriting the sign_out redirect path method
     
     
     private
