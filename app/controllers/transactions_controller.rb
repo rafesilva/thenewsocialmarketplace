@@ -1,58 +1,60 @@
-class Transaction < ApplicationRecord
-  belongs_to :user
-  belongs_to :merchant
-  has_one :item, through: :merchant
+class TransactionsController < ApplicationController
+  before_action :set_transaction, only: [:show, :edit, :update, :destroy]
+  include CurrentCart
+  before_action :set_cart
 
-  # The individual merchant fee converted to a percentage out of 100%
-  def fee_as_percentage
-    (merchant.fee * 100).to_i
+  def index
+    @transactions = Transaction.all
   end
 
-  def total_amount
-    (total * 100).to_i
+  def show
+    @item = Item.find_by_id(@transaction.item_id)
   end
 
-  def charged_fee
-    total_amount * merchant.fee
+  def create
+    @merchant = Merchant.find(params[:transaction][:merchant_id])
+    @user = current_user
+    @transaction = Transaction.new(transaction_params)
+
+    respond_to do |format|
+      if @transaction.save
+        @transaction.charge_with_credit_check
+        format.html { redirect_to @transaction, notice: 'Transaction was successfully created.' }
+        format.json { render :show, status: :created, location: @transaction }
+      else
+        format.html { render :new }
+        format.json { render json: @transaction.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
-  def description
-    "Transaction ID: #{id} -- #{user.email} just bought a #{item_bought.title} for $#{total.to_s}, from #{merchant.title}"
+  def update
+    respond_to do |format|
+      if @transaction.update(transaction_params)
+        format.html { redirect_to @transaction, notice: 'Transaction was successfully updated.' }
+        format.json { render :show, status: :ok, location: @transaction }
+      else
+        format.html { render :edit }
+        format.json { render json: @transaction.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
-  def item_bought
-    Item.find_by_id(self.item_id)
+  def destroy
+    @transaction.destroy
+    respond_to do |format|
+      format.html { redirect_to transactions_url, notice: 'Transaction was successfully destroyed.' }
+      format.json { head :no_content }
+    end
   end
 
-  def make_charge
-    charge = Stripe::Charge.create({
-      # Total Amount user will be charged (in cents)
-      amount: total_amount,
-      # Currency of charge
-      currency: 'USD',
-      # the applicant users Stripe Customer ID
-      # expect format of "cus_0xxXxXXX0XXxX0"
-      customer: user.stripe_customer_id,
-      # Description of charge
-      description: description,
-      # Final Destination of charge (host standalone account)
-      # Expect format of acct_00X0XXXXXxxX0xX
-      destination: merchant.user.uid,
-      # Fee, set individually per merchant (as % but converted to cent)
-      application_fee: charged_fee.to_i
-      }
-    )
+  private
 
-  # if the charge is successful, we'll receive a response in the charge object
-  # We can then query that object via charge.paid
-  # if true we can update our attribute
-  after_charge_succeeded(charge) if charge.paid?
-
-  rescue => e
-    errors.add(:stripe_charge_error, "Could not create the charge. Info from Stripe: #{e.message}")
+  def set_transaction
+    @transaction = Transaction.find(params[:id])
   end
 
-  def after_charge_succeeded(charge)
-    update_attributes(paid: true, stripe_charge: charge.id, fee_charged: charged_fee/100) if charge.paid?
+  def transaction_params
+    params.require(:transaction).permit(:user_id, :merchant_id, :item_id, :total, :paid, :stripe_charge, :fee_charged)
   end
 end

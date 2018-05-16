@@ -1,11 +1,12 @@
 
+  <%= devise_error_messages! %>
+
 <div class="links"><h2>Resend confirmation instructions</h2></div>
 
 <div class="content-login">
 <div class="box-login">
 
 <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
 
     <%= f.label :email %> 
     <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class:"form-control" %>

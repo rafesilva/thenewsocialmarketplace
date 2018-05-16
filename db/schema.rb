@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_16_111457) do
+ActiveRecord::Schema.define(version: 2018_05_16_134934) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,16 @@ ActiveRecord::Schema.define(version: 2018_05_16_111457) do
     t.index ["author_id", "receiver_id"], name: "index_conversations_on_author_id_and_receiver_id", unique: true
     t.index ["author_id"], name: "index_conversations_on_author_id"
     t.index ["receiver_id"], name: "index_conversations_on_receiver_id"
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.decimal "price"
+    t.bigint "merchant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["merchant_id"], name: "index_items_on_merchant_id"
   end
 
   create_table "line_items", force: :cascade do |t|
@@ -206,6 +216,12 @@ ActiveRecord::Schema.define(version: 2018_05_16_111457) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.decimal "fee_charged", precision: 8, scale: 2, default: "0.0"
+    t.integer "item_id"
+    t.decimal "total", precision: 8, scale: 2, default: "0.0", null: false
+    t.boolean "paid", default: false
+    t.string "stripe_charge"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_transactions_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -247,6 +263,7 @@ ActiveRecord::Schema.define(version: 2018_05_16_111457) do
 
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
+  add_foreign_key "items", "merchants"
   add_foreign_key "line_items", "carts"
   add_foreign_key "line_items", "products"
   add_foreign_key "mailboxer_conversation_opt_outs", "mailboxer_conversations", column: "conversation_id", name: "mb_opt_outs_on_conversations_id"
@@ -256,4 +273,5 @@ ActiveRecord::Schema.define(version: 2018_05_16_111457) do
   add_foreign_key "personal_messages", "users"
   add_foreign_key "posts", "users"
   add_foreign_key "products", "users"
+  add_foreign_key "transactions", "users"
 end

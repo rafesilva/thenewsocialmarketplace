@@ -41,7 +41,7 @@
                     </div>
                     </div>
 
-
+                    <li><%= image_tag current_user.avatar.url, class:"pic-nav" %></li>
               <li><%= current_user.name %></li>
               <li><%= link_to 'Log Out', destroy_user_session_path, method: :delete %></li>
              
@@ -65,11 +65,14 @@
               <li><%= link_to 'Blog', posts_path, class:"word-nav" %></li>
               <li><%= link_to 'Profile', users_path, class:"word-nav" %></li>
               <li><%= link_to 'Messages', conversations_path, class:"word-nav" %></li>
+                 
+              
               </ul>
               <% else %>
              
               <p>Welcome to The New Social Marketplace</p>
-              <% end %>
+              <% end %>              
+
              </div>
            </br></br></br>
 
@@ -78,6 +81,14 @@
 
 
 
-      </main> 
+      </main>  
+      <div class="nav-bar">
+      <% if current_user.admin? %>
+      <p><li><%= link_to 'Transactions', user_transactions_path(current_user), class:"word-nav" %></li></p>
+      <li><%= link_to 'Merchants', merchants_index_path, class:"word-nav" %> </li>
+      <li><%= link_to 'ADMIN', admin_index_path, class:"word-nav" %> </li>
+          <% else %>
+          <% end %>
+          </div>
     </body>
 </html>
