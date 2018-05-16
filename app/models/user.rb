@@ -93,6 +93,7 @@ class User < ApplicationRecord
         leaders.destroy leader ##### VERY USEFULL!!!!
        
     end
+    
     def follow!(leader)
         if leader != self && !following?(leader)
         leaders << leader

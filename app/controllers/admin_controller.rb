@@ -1,5 +1,8 @@
 class AdminController < ApplicationController
-
+    before_action :authenticate_user!, only: [:follow, :show] 
+    include CurrentCart  
+    before_action :set_cart 
+    
     def index
       @users = User.all
       @merchant_users = User.all.select{ |user| user.can_receive_payments?}

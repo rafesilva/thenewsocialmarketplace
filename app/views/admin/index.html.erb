@@ -1,6 +1,6 @@
   <h2>
     Signed Up Customers </h2>
-<%= @users.each do |user| %>
+<% @users.each do |user| %>
   
   
   
@@ -11,15 +11,17 @@
         <% if user.admin? %>
           Admin
         <% else %>
+
           <%= link_to 'Make Admin', admin_path(user, admin: 'true'), class:'btn-info', method: :put %>
       
         <%= link_to 'Credit $10', admin_path(user, amount: 10.00), class:'btn btn-primary', method: :put %>
       
         <%= "#{number_to_currency(user.credit)} credit remaining" %>
-
+        <%end%>
+        <%end%>
   <h2>
     Stripe Connected Merchants</h2>
-<% @merchants.each do |merchant| %>
+    <% @merchants.each do |merchant| %>
   
   
   
@@ -32,8 +34,8 @@
         <%= form_for merchant, method: "put" do |f| %>
           <%= f.number_field :fee, placeholder: :fee, step: 0.05 %>
           <%= f.submit "Set Platform Fee", class: ' btn btn-info' %>
-          <%end%>
+      
           <% end %>
           <%end%>
-          <%end%>
+
 
