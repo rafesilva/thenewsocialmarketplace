@@ -83,12 +83,10 @@
 
       </main>  
       <div class="nav-bar">
-      <% if current_user.admin? %>
       <p><li><%= link_to 'Transactions', user_transactions_path(current_user), class:"word-nav" %></li></p>
       <li><%= link_to 'Merchants', merchants_index_path, class:"word-nav" %> </li>
       <li><%= link_to 'ADMIN', admin_index_path, class:"word-nav" %> </li>
-          <% else %>
-          <% end %>
+        
           </div>
     </body>
 </html>
