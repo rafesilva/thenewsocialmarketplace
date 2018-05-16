@@ -4,7 +4,7 @@ class User < ApplicationRecord
 
 
 
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :confirmable,:omniauthable, :omniauth_providers => [:stripe_connect]
+    devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :confirmable,:omniauthable, :omniauth_providers => [:stripe_connect]
 
 
     acts_as_messageable

@@ -7,7 +7,7 @@ SEARCH FOR USER
   <% end %>
 
 
-  <%= @users.each do |user| %
+  <%= @users.each do |user| %>
     <ul>
         <li><%= link_to user.name, user_patch(user) %></li></br>
     </ul>

@@ -13,3 +13,4 @@ def self.search(user)
         User.all
   end
 end
+end
