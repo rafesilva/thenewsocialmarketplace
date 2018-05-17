@@ -59,9 +59,9 @@
 
 
 
- <% end %>
+
  <h3>Comments</h3>
-<% cache [@user, 'comments', @can_moderate] do %>
+<% cache [@user, 'comments']  do %>
   <%= render @user.comments %>
 <% end %>
 
@@ -71,13 +71,13 @@
     <%= f.label :body %><br>
     <%= f.text_area :body, class: "form-control" %>
   </div>
-  <%= f.hidden_field :post_id %>
+  <%= f.hidden_field :user_id %>
   <%= f.submit class: "btn btn-primary" %>
   
 <% end %>
 <div>
 
 </div>
-
+<% end %>
 </div>
 

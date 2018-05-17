@@ -10,6 +10,7 @@ class UsersController < ApplicationController
                 @users = User.order('created_at DESC').paginate(page: params[:page], per_page: 30)                
                 user = current_user.id
                 @user= User.find(user)
+                
             end
 
 
