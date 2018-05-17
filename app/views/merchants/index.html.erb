@@ -2,11 +2,11 @@
   <h1> Merchants</h1>
 <% if @user.is_seller? %>
    <% unless @user.can_receive_payments? %>
-   <% end %>
 
         <h4>You wont be able to sell items until you register with Stripe!</h4>
             <%= link_to 'Connect', stripe_url, class: '',  target: '_blank' %>
-         
+            <% end %>
+
         
          <%= @merchants.each do |merchant| %>
         <h3><%= merchant.title %></h3>

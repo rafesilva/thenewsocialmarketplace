@@ -169,7 +169,6 @@ h3 {
                     border-radius: 3%;
                     border: -3px solid rgba(121, 116, 116, 0.973);
                     float: left;
-                    vertical-align: center;
                     text-align: center;
                     padding: 3%;
                     width: 89%;
@@ -179,7 +178,6 @@ h3 {
                             .nav-bar ul {
                                 position: relative;
                                 text-align:center;
-                                vertical-align: center;
                                 display: inline-flex;
                                 color: rgba(255, 249, 249, 0.172);    
                             }
@@ -190,6 +188,7 @@ h3 {
                                     border-radius: 10% ;
 
 
+
                                 }
 
 
@@ -198,7 +197,7 @@ h3 {
                                        font-family: 'Monoton', cursive;
                                         font-size: 40px;
                                         letter-spacing: 3px;
-                                        color: white;
+                                        color: rgb(254, 222, 94);
                                         text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 
 
@@ -214,7 +213,8 @@ h3 {
                                         text-align: center;
                                         letter-spacing: 1px;
                                         background: #fafcffd7;
-                                        border-radius: 60%;
+                                        border-radius: 10%;
+                                        
                                         }
 
 
