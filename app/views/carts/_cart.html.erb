@@ -4,19 +4,19 @@
     <p><%= flash[:error] %></p>
   </div>
 <% end %>
-
-
-
   
 <div class="outside-cart">
+
 <ul>
 <li><%= render(cart.line_items) %></li>
 </ul>
-
-
+</br>
 <ul>
 <li>Total</li>
 <li><%= number_to_currency(cart.total_price) %></li></ul>
+
+
+</div>
 
 
 <ul><%= form_tag charges_path do %>
@@ -35,12 +35,11 @@
     <% end %>
     </ul>
 
- 
   <ul>
     <%= button_to 'Empty cart', @cart, method: :delete, data: { confirm: 'Empty your Cart, sure?' } %>  
  </ul>
 
-    </div>
+    
 
 
  

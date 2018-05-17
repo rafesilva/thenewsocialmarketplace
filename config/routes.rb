@@ -21,7 +21,7 @@ Rails.application.routes.draw do
             post 'follow/:id', to: 'users#follow', as: 'follow_user'
             post 'unfollow/:id', to: 'users#unfollow', as: 'unfollow_user'
 
-            get 'users/:id/products' => 'products#index', :as => :user_products_path
+            get 'users/:id/products' => 'products#index', :as => :user_products
             post 'users/:id/products' => 'products#destroy', :as => :user_products_destroy
          
             get 'thanks', to: 'charges#thanks', as: 'thanks'
