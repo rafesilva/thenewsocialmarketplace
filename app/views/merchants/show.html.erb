@@ -9,6 +9,8 @@
           <%= link_to 'Add New Item', new_merchant_item_path(@merchant), class: 'btn btn-lg btn-success'%>
       <% else %>
         <%= link_to 'Back', merchants_path, class: 'btn btn-info'%>
+        <% end %>
+
   <% if @merchant.owner.can_receive_payments?%>
  
       <% if @items.any? %>
@@ -19,8 +21,8 @@
                 <p> <%= item.description %> </p>
                 <p> <%= "$#{item.price}" %> </p>
               
-                <% end %>  
-                <% end %> 
+               
+                
 
 
                
@@ -30,19 +32,17 @@
                     <%= f.hidden_field :item_id, value: item.id %>
                     <%= f.hidden_field :total, value: item.price %>
                     <%= f.submit 'BUY', class: 'btn btn-success'%>
-                    <% end %> 
+                   
+
                     <% if current_user == @merchant.owner %>
                 
-                
-                    
                     <%= link_to 'Edit', edit_merchant_item_path(@merchant, item) %>
                   
                   
                     <%= link_to 'Destroy', merchant_item_path(@merchant, item), method: :delete %>
-    
+                    <% end %> <% end %>  <% end %>  
       <h4> This merchant hasn't registered with stripe yet :( </h4>
     
-    <% end %>
     <% end %>
     <% end %>  
 

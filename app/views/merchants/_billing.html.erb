@@ -10,14 +10,12 @@
           <%= form_for @user, html: {class:'form-horizontal add-card'} do |f| %>
             <%= f.hidden_field :stripe_temporary_token, id: 'stripe_temporary_token' %>
             
-            
-            
                   <label.small>
                     Card Number
                   <%= text_field_tag :card_number, nil, name: nil, class: 'form-control', data: {stripe: 'number' }, placeholder: 'Card Number' %>
 
             
-                  <label.small >
+                  <label.small>
                     Expiration month
                   <%= select_month(Date.today, {add_month_numbers: true}, id: 'card_month', class: 'form-control', data: {stripe: 'exp-month'}) %>
                 
@@ -29,5 +27,5 @@
                     Security Code
                   <%= text_field_tag :card_cvc, nil, name: nil, class: 'form-control', data: {stripe: 'cvc'}, placeholder: 'CVV/CVC' %>
             <%= f.submit %>
-            <% end%>
-            <% end%>
+          <% end %>
+        <% end %>

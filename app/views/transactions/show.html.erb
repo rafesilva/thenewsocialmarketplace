@@ -1,6 +1,5 @@
 
-    <h2>
-      <%= "Details for Transaction #{@transaction.id}" %></h2>
+    <h2><%= "Details for Transaction #{@transaction.id}" %></h2>
     <p>
        User:
       <%= @transaction.user.email %></p>
@@ -25,5 +24,5 @@
       Stripe Charge ID
       <%= @transaction.stripe_charge %>
 
-    
+      <p>
       <%= link_to 'Back', merchants_path, class: 'btn btn-info' %>

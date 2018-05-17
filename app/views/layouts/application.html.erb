@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville|Skranji" rel="stylesheet">
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+   
     <%= Gon::Base.render_data %>
 
     <%= csp_meta_tag %>
@@ -72,7 +73,7 @@
               </ul>
               <% else %>
              
-              <p>Welcome to The New Social Marketplace</p>
+              <div class="title_"><h1>>Welcome to The New Social Marketplace</h1></div>
               <% end %>              
 
              </div>
@@ -83,11 +84,14 @@
 
 
 
-      </main>  
-      <% if user_signed_in? %>
+      </main>                <% if user_signed_in? %>
+
+      <% if current_user.admin? %>
       <div class="nav-bar">
       <li><%= link_to 'Merchants', merchants_index_path, class:"word-nav" %> </li>
       <li><%= link_to 'ADMIN', admin_index_path, class:"word-nav" %> </li>
+        <% end %>
+        <% else %>
         <% end %>
           </div>
     </body>

@@ -4,6 +4,8 @@ class AdminController < ApplicationController
     before_action :set_cart 
     
     def index
+   
+
       @users = User.all
       @merchant_users = User.all.select{ |user| user.can_receive_payments?}
       @merchants = Merchant.where(user: @merchant_users )

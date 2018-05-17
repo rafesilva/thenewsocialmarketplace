@@ -1,3 +1,28 @@
 // Place all the styles related to the Messages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.btn-primary-messages {
+    text-align: center;
+    background-color: rgba(178, 220, 249, 0.72);
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: 4px solid rgba(255, 255, 255, 0.166);
+    border-radius: 5%;
+    cursor: pointer;
+    display: -webkit-box;
+    }
+    .btn-primary-messages:hover {
+        background-color: #4550a091;
+        }
+
+      
+        @keyframes line-item-highlight { 
+             0%{
+                background: rgba(65, 136, 230, 0.57); }
+                 100%{
+                 background: none; }
+                }
+
+
+

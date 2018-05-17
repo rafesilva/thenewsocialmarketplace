@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_17_084053) do
+ActiveRecord::Schema.define(version: 2018_05_17_111912) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -223,6 +223,8 @@ ActiveRecord::Schema.define(version: 2018_05_17_084053) do
     t.boolean "paid", default: false
     t.string "stripe_charge"
     t.bigint "user_id"
+    t.bigint "merchant_id"
+    t.index ["merchant_id"], name: "index_transactions_on_merchant_id"
     t.index ["user_id"], name: "index_transactions_on_user_id"
   end
 
@@ -275,5 +277,6 @@ ActiveRecord::Schema.define(version: 2018_05_17_084053) do
   add_foreign_key "personal_messages", "users"
   add_foreign_key "posts", "users"
   add_foreign_key "products", "users"
+  add_foreign_key "transactions", "merchants"
   add_foreign_key "transactions", "users"
 end

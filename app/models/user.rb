@@ -1,6 +1,4 @@
 class User < ApplicationRecord
-    attr_accessor :url
-    attr_accessor :stripe_temporary_token
 
 
 
@@ -27,6 +25,8 @@ class User < ApplicationRecord
     has_many :comments, foreign_key: :user_id, dependent: :destroy 
     has_many :text_comments, dependent: :destroy
 
+    attr_accessor :url
+    attr_accessor :stripe_temporary_token
 
     
     def is_seller?

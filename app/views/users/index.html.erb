@@ -4,12 +4,12 @@
 <% if notice %>
 <% end %>
 <%= notice %>
-
+<div>
 <%= form_tag(users_path, method: :get) do %>
-    User <%= text_field_tag :name, params[:name] %>
+    <%= text_field_tag :name, params[:name] %>
     <%= submit_tag 'Search', name: nil %>
   <% end %>
-
+</div>
 
 
 <div class="main">
@@ -17,19 +17,23 @@
 <% page_header "Users" %>
 
 <%= will_paginate %>
-
+<h2>All Users</h2>
 <ul>
   <% @users.each do |user| %>
     <li>
-      <strong><%= user.name %></strong>
+     <a class="user"><%= user.name %></a>
       <% unless current_user == user %>
-        <%= link_to 'Send a message', new_message_path(to: user.id), class: '' %>
-      <% end %>
-    </li>
+        <%= link_to 'Send a message', new_message_path(to: user.id), class:'msg' %>
+			<% end %>
+			
+		</li>
+		</br>
   <% end %>
 </ul>
 
 <%= will_paginate %>
+</br>
+</br>
 		<h1>Your Profile</h1>
 		<p> <%= link_to "Go to Your Store!", products_path, class: "btn btn-default" %></p>
 
@@ -70,10 +74,10 @@
 								</div>
 								
 							</div>
-                        </div>
-                     </div>
-					 <div class="clear"></div>
-				 </div>
+						</div>
+					</div>
+					<div class="clear"></div>
+				</div>
 			 </div>
 			 <div class="profile-bottom">
 				 <ul>
@@ -92,6 +96,7 @@
 				 </ul>
 			 </div>
 		 </div>
+		 </div>
 	 </div>
    			<div class="content">
 
@@ -104,7 +109,6 @@
 </div>	
 
 
-<%= render 'search' %>
 
 
   </div>

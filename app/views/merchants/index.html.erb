@@ -5,10 +5,11 @@
 
         <h4>You wont be able to sell items until you register with Stripe!</h4>
             <%= link_to 'Connect', stripe_url, class: '',  target: '_blank' %>
+            <% end %> 
             <% end %>
 
         
-         <%= @merchants.each do |merchant| %>
+         <% @merchants.each do |merchant| %>
         <h3><%= merchant.title %></h3>
         <p><%= merchant.description %></p>
 
@@ -24,9 +25,8 @@
                 <%= link_to 'Show', merchant %>
                    <% end %>   
                    <% end %> 
-                   <% end %> 
-
-</br>
+                   
+            </br>
 
     <%= link_to 'New Merchant', new_user_merchant_path(@user) %>
     <%= render 'billing' %>

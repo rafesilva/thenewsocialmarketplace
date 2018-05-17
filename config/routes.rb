@@ -1,15 +1,11 @@
 Rails.application.routes.draw do
+  devise_for :users,  :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
 
-  get 'merchants/index'
+ 
+  
+  
   ## OLD SESSION, WORKING FOR WITH DEVISE_SCOPES.
 
-
-  root 'streaming#index'
-  
-  devise_for :users,  :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
-  
-
-    resources :users, only: [ :index, :show, :edit, :update ] 
 
         as :user do
             get 'signup', to: 'devise/registrations#new', as: 'signup'
@@ -26,7 +22,10 @@ Rails.application.routes.draw do
          
             get 'thanks', to: 'charges#thanks', as: 'thanks'
 
-           
+            get 'merchants/index'
+
+
+            root 'streaming#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   devise_scope :user do
     authenticated :user do

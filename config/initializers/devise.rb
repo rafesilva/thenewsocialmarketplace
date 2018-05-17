@@ -8,8 +8,14 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  config.secret_key = ENV['DEVISE_SECRET_KEY']
-  
+
+  config.secret_key = '163e90d1552e3c5a2acedaeabfec66f715beef4fbfa3a85583db00817092516861f3e8cc47b11e7426462cae20899318fd13e39776a2864b3ed28dc48fcae7f5'
+
+  config.omniauth :stripe_connect, 
+        ENV['STRIPE_CONNECT_CLIENT_ID'], 
+        ENV['STRIPE_SECRET_KEY'], 
+        :scope => 'read_write',
+        :stripe_landing => 'login'
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
   # config.parent_controller = 'DeviseController'
@@ -233,11 +239,11 @@ Devise.setup do |config|
 
   # Configure the default scope given to Warden. By default it's the first
   # devise role declared in your routes (usually :user).
-   config.default_scope = :user
+   #config.default_scope = :user
 
   # Set this configuration to false if you want /users/sign_out to sign out
   # only the current scope. By default, Devise signs out all scopes.
-  config.sign_out_all_scopes = true
+  #deleteconfig.sign_out_all_scopes = true
 
   # ==> Navigation configuration
   # Lists the formats that should be treated as navigational. Formats like
@@ -251,12 +257,14 @@ Devise.setup do |config|
   # config.navigational_formats = ['*/*', :html]
 
   # The default HTTP method used to sign out a resource. Default is :delete.
+ 
+    config.sign_out_via = :delete
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
-    config.omniauth :stripe_connect, ENV['STRIPE_CONNECT_CLIENT_ID'], ENV['STRIPE_SECRET_KEY'], :scope => 'read_write',
-    :stripe_landing => 'login'
+
+
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
