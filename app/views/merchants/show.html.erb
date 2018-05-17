@@ -1,7 +1,7 @@
 
-    <h4><%= @merchant.title %></h4>
+    <h1><%= @merchant.title %></h1>
     <p><%= @merchant.description %></p>
-    
+    </br>
       <% if current_user == @merchant.owner %>
         <%= link_to 'Edit', edit_merchant_path(@merchant), class: 'btn btn-info' %>
         <%= link_to 'Back', merchants_path, class: 'btn btn-info' %>
@@ -12,7 +12,7 @@
         <% end %>
 
   <% if @merchant.owner.can_receive_payments?%>
- 
+  <% end %>
       <% if @items.any? %>
         <% @items.each do |item| %>
             
@@ -20,9 +20,7 @@
                 <h3><%= item.title %> </h3>
                 <p> <%= item.description %> </p>
                 <p> <%= "$#{item.price}" %> </p>
-              
-               
-                
+          
 
 
                
@@ -40,7 +38,7 @@
                   
                   
                     <%= link_to 'Destroy', merchant_item_path(@merchant, item), method: :delete %>
-                    <% end %> <% end %>  <% end %>  
+                    <% end %> <% end %>    
       <h4> This merchant hasn't registered with stripe yet :( </h4>
     
     <% end %>

@@ -13,9 +13,6 @@
   <% end %>
   <div class="content">
 
-    
-
-
   <%= will_paginate %>
 
   </br>
@@ -25,15 +22,19 @@
       <p><%= mailbox_section 'inbox', @box, class: 'btn btn-lg btn-primary-conv'  %></p>
       <p><%= mailbox_section 'sent', @box, class: 'btn btn-lg btn-primary-conv'  %></p>
       <p><%= mailbox_section 'trash', @box, class: 'btn btn-lg btn-primary-conv'  %></p>
-  
+</div>
+</br>
       </div>
+  </br>
+      <h2>Box</h2>
+      </br>
       <%= render partial: 'conversations/conversation', collection: @conversations %>
       </div>
       </br>
       </br>
       <% if @box == 'trash' %>
       <p><%= link_to 'Empty trash', empty_trash_conversations_path, class: 'btn btn-lg btn-primary-conv' , method: :delete,data: {confirm: 'Are you sure?'} %></p>
-    <% end %>
-      </div>
+    
+      </div>    <% end %>
 
       

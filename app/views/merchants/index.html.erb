@@ -1,18 +1,21 @@
 
-  <h1> Merchants</h1>
+  <div class="main"><h1> Merchants</h1>
+
 <% if @user.is_seller? %>
    <% unless @user.can_receive_payments? %>
 
         <h4>You wont be able to sell items until you register with Stripe!</h4>
             <%= link_to 'Connect', stripe_url, class: '',  target: '_blank' %>
+            
             <% end %> 
-            <% end %>
-
-        
+        <div>
+      
+        <% end %> 
          <% @merchants.each do |merchant| %>
-        <h3><%= merchant.title %></h3>
+            </br>
+        <h2><%= merchant.title %></h2>
         <p><%= merchant.description %></p>
-
+</br>
          <% if current_user == merchant.owner %>
           
                 <%= link_to 'Show', merchant %>
@@ -20,15 +23,23 @@
                 <%= link_to 'Edit', edit_merchant_path(merchant) %>
             
                 <%= link_to 'Destroy', merchant, method: :delete, data: { confirm: 'Are you sure?' } %>
+                </br>
         <% else %>
 
                 <%= link_to 'Show', merchant %>
-                   <% end %>   
+                </br>
+
+                     
                    <% end %> 
-                   
+            <% end %>
             </br>
 
-    <%= link_to 'New Merchant', new_user_merchant_path(@user) %>
+    <%= link_to 'Create a new Merchant', new_user_merchant_path(@user) %>
+    </br>
+    </br>
+    </br>
+
+    
     <%= render 'billing' %>
 
    

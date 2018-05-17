@@ -1,31 +1,35 @@
 
 
+      
+      
       <% if @user.can_make_payments? %>
-        <h5>card-available</h5>
+        <h2>Card-available</h2>
           Already a Stripe Customer.
       <% else %>
-        <h5>card-unavailable </h5>
+        <h2>Card unavailable </h2>
         Not a Stripe Customer Yet, Let's Create An Account!
-        
-          <%= form_for @user, html: {class:'form-horizontal add-card'} do |f| %>
+        <div class="box-login">
+          <%= form_for @user, html: {class:'main'} do |f| %>
             <%= f.hidden_field :stripe_temporary_token, id: 'stripe_temporary_token' %>
             
                   <label.small>
                     Card Number
                   <%= text_field_tag :card_number, nil, name: nil, class: 'form-control', data: {stripe: 'number' }, placeholder: 'Card Number' %>
-
+                  </br>
             
                   <label.small>
                     Expiration month
                   <%= select_month(Date.today, {add_month_numbers: true}, id: 'card_month', class: 'form-control', data: {stripe: 'exp-month'}) %>
-                
+                </br>
                   <label.small>
                     Expiration year
                   <%= select_year(Date.today.year, {start_year: Date.today.year, end_year: Date.today.year + 10}, id: 'card_year', class: 'form-control', data: {stripe: 'exp-year'}) %>
-                
+                </br>
                   <label.small>
                     Security Code
                   <%= text_field_tag :card_cvc, nil, name: nil, class: 'form-control', data: {stripe: 'cvc'}, placeholder: 'CVV/CVC' %>
+                  </br>
             <%= f.submit %>
+            </div>
           <% end %>
         <% end %>
