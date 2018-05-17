@@ -33,25 +33,7 @@ Access from your Unix terminal by commandline the main folder, ep: 'cd ~/nspm/' 
 Run bundle install and wait for the process. 
 Create a file '.env' at the root app folder with the followings tags:
 
-STRIPE_PUBLISHABLE_KEY=
-STRIPE_SECRET_KEY=
-STRIPE_CONNECT_CLIENT_ID=
-CONNECTED_STRIPE_ACCOUNT_ID=
-
-DEVISE_SECRET_KEY=
-
-SENDGRID_SMTP_SERVER=
-SENDGRID_USERNAME=
-SENDGRID_PASSWORD=2jct9lat0793
-SEND_GRID_KEY=
-
-S3_ACCESS_KEY=
-S3_SECRET_KEY=	
-S3_REGION=
-S3_BUCKET=
-
-USERNAME_DB = 
-PASSWORD_DB = 
+STRIPE_PUBLISHABLE_KEY=STRIPE_SECRET_KEY=STRIPE_CONNECT_CLIENT_ID=CONNECTED_STRIPE_ACCOUNT_ID=DEVISE_SECRET_KEY=SENDGRID_SMTP_SERVER=SENDGRID_USERNAME=SENDGRID_PASSWORD=SEND_GRID_KEY=S3_ACCESS_KEY=S3_SECRET_KEY=	S3_REGION=S3_BUCKET=USERNAME_DB=PASSWORD_DB= 
 
 Then run "rails s" on your terminal to start the Rails server.
 Go to your brownser and reach the local by http://localhost:3000.
