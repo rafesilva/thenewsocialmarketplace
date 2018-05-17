@@ -61,7 +61,7 @@
               <% if user_signed_in? %>
               <ul>
               <li><%= link_to 'Marketplace', root_path, class:"word-nav" %></li>
-              <li><%= link_to 'Store', user_products_path_url(current_user.id), class:"word-nav" %></li>
+              <li><%= link_to 'Store', user_products_url(current_user.id), class:"word-nav" %></li>
               <li><%= link_to 'Blog', posts_path, class:"word-nav" %></li>
               <li><%= link_to 'Profile', users_path, class:"word-nav" %></li>
               <li><%= link_to 'Messages', conversations_path, class:"word-nav" %></li>
@@ -84,10 +84,11 @@
 
 
       </main>  
+      <% if user_signed_in? %>
       <div class="nav-bar">
       <li><%= link_to 'Merchants', merchants_index_path, class:"word-nav" %> </li>
       <li><%= link_to 'ADMIN', admin_index_path, class:"word-nav" %> </li>
-        
+        <% end %>
           </div>
     </body>
 </html>
