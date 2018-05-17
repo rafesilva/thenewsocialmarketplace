@@ -53,8 +53,7 @@ img{max-width:100%;}
 /*end reset*/
 /****-----start-body----****/
 body{
-    background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);            
-    background-repeat: no-repeat;
+    background-image: linear-gradient(135deg, #324494 0%, #764ba2 100%);    background-repeat: no-repeat;
     margin: 1% 12%;
    
 }
@@ -197,9 +196,31 @@ h3 {
                                        font-family: 'Monoton', cursive;
                                         font-size: 40px;
                                         letter-spacing: 3px;
-                                        color: rgb(254, 222, 94);
-                                        text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-
+                                        color: rgb(245, 225, 144);
+                                        text-shadow: 1px 1px 0 #000,
+                                        -1px 1px 0 #000,
+                                        1px -1px 0 #000,
+                                        -1px -1px 0 #000,
+                                        0px 1px 0 #000,
+                                        0px -1px 0 #000,
+                                        -1px 0px 0 #000,
+                                        1px 0px 0 #000,
+                                        2px 2px 0 #000,
+                                        -2px 2px 0 #000,
+                                        2px -2px 0 #000,
+                                        -2px -2px 0 #000,
+                                        0px 2px 0 #000,
+                                        0px -2px 0 #000,
+                                        -2px 0px 0 #000,
+                                        2px 0px 0 #000,
+                                        1px 2px 0 #000,
+                                        -1px 2px 0 #000,
+                                        1px -2px 0 #000,
+                                        -1px -2px 0 #000,
+                                        2px 1px 0 #000,
+                                        -2px 1px 0 #000,
+                                        2px -1px 0 #000,
+                                        -2px -1px 0 #000;
 
 
 
@@ -221,12 +242,12 @@ h3 {
                             main {
                         
                             padding: 22%;
-                            background: rgba(2, 46, 111, 0.563);
+                            background: rgba(255, 255, 255, 0.851);
                             margin: 5s;
                             position: relative;
                             text-align: center;
                             border-radius: 40%;
-                            border: 1px solid rgba(204, 204, 204, 0.92);
+                            border: 3px solid rgb(112, 114, 114);
                             z-index: 0;
                             }
     
@@ -369,7 +390,7 @@ h3 {
 
 .profile-posts {
 
-    background: white;
+    background: rgb(218, 218, 242);
     margin-top:3em;
     width: 100%;
 

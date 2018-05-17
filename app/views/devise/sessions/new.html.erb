@@ -1,7 +1,9 @@
 
-  <%= devise_error_messages! %>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
   <div class="box-login">
+  <%= devise_error_messages! %>
+
     <%= f.label :email %>
     <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
 

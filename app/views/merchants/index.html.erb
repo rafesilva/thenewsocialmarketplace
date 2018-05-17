@@ -22,13 +22,14 @@
         <% else %>
 
                 <%= link_to 'Show', merchant %>
+                   <% end %>   
+                   <% end %> 
 
 </br>
 
     <%= link_to 'New Merchant', new_user_merchant_path(@user) %>
-    <% end %>
+    <%= render 'billing' %>
 
-    <% end %>   
-    <% end %>   
+   
  
    
