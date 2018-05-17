@@ -42,23 +42,22 @@
                          <h2>Description</h2>
                              <h3><%= sanitize(product.description) %></h3>
                             
-                         
-                          
-                             </div>
+                             <%= button_to 'Add to Cart', line_items_path(product_id: product), class:"btn-primary" %>
+
+                             <% end %> 
+                             <% end %> 
 
                              </div>
-                            <%= button_to 'Add to Cart', line_items_path(product_id: product), class:"btn-primary" %>
 
-
-                            <% end %>                     <% end %> 
+                             </div>
+                             <ul>
 
 
 
                          <div class="clear"></div>
-                     
+                         </div>            
                 
-                     <ul>
-                
+                   
+                    
 
 
-</div>
