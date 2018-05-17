@@ -92,7 +92,6 @@ Rails.application.routes.draw do
   
   resources :purchases, only: [:show]
   
-  resources :transactions
 
   resources :products
   
