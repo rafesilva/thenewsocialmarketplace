@@ -51,16 +51,7 @@
 </div>
 <% if current_user != @user && !current_user.following?(@user) %>
 
-
-
-
-<%else%>
-<p><%= link_to "Home", root_url, class: "btn btn-default" %></p>
-
-
-
-
- <h3>Comments</h3> -- NOT WORKING STABLE YET.
+<h3>Comments</h3> -- NOT WORKING STABLE YET.
 <% cache [@user, 'comments']  do %>
   <%= render @user.comments %>
 <% end %>
@@ -76,6 +67,13 @@
   
 <% end %>
 <div>
+
+
+<%else%>
+<p><%= link_to "Home", root_url, class: "btn btn-default" %></p>
+
+
+
 
 </div>
 <% end %>

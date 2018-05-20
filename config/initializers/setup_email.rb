@@ -1,6 +1,6 @@
 ActionMailer::Base.smtp_settings = {
-  :port           => ENV['SMTP_PORT'],
-  :address        => ENV['SENDGRID_SMTP_SERVER'],
+  :port           => '587',
+  :address        => 'smpt.sendgrid.net',
   :user_name      => ENV['SENDGRID_USERNAME'],
   :password       => ENV['SENDGRID_PASSWORD'],
   :authentication => :plain,
