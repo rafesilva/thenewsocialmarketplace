@@ -20,8 +20,8 @@ Rails 5.2.0:  gem install rails -v 5.2.0
 Ruby: 2.5.2:  brew install ruby or brew install rbenv ruby-build
 PostgreSQL: brew install postgresql
 
-You will need an acoount at AWS S3 to store data files.
-You will need an acoount at Stripe.com to hand the transactions and the merchant side workflow.
+You will need an account at AWS S3 to store data files.
+You will need an account at Stripe.com to hand the transactions and the merchant side workflow.
 You will need an account at SendGrid.com to configurate the ActionMailer.
 
 Cache: ON.
